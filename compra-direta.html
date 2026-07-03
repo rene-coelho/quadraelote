@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Compra Direta — Quadra e Lote</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+  :root{
+    --obsidian:#15211f;
+    --petrol:#1a3a5f;
+    --skyblue:#60a8c9;
+    --offwhite:#FAFAF7;
+    --line:#dedcd4;
+    --text-soft:#5a5a55;
+    --radius-sm:4px;
+    --radius-md:6px;
+    --maxw:1180px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{font-family:'Inter',sans-serif;color:var(--obsidian);background:var(--offwhite);line-height:1.55;-webkit-font-smoothing:antialiased;}
+  a{color:inherit;}
+
+  /* ── HEADER ── */
+  header{background:var(--offwhite);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:200;}
+  .header-inner{max-width:var(--maxw);margin:0 auto;padding:18px 24px;display:flex;align-items:center;justify-content:space-between;}
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;}
+  .brand-icon{width:30px;height:30px;border:2px solid var(--obsidian);border-radius:var(--radius-sm);position:relative;overflow:hidden;flex-shrink:0;}
+  .brand-icon::before{content:'';position:absolute;left:0;bottom:0;width:50%;height:50%;background:var(--petrol);}
+  .brand-icon::after{content:'';position:absolute;left:0;top:50%;width:100%;height:1px;background:var(--obsidian);}
+  .brand-icon-vline{position:absolute;top:0;left:50%;width:1px;height:100%;background:var(--obsidian);}
+  .brand-name{font-size:17px;font-weight:600;letter-spacing:-0.2px;}
+  .header-nav{display:flex;align-items:center;gap:28px;}
+  .header-links{display:flex;align-items:center;gap:24px;}
+  .header-links a{font-size:14px;font-weight:500;text-decoration:none;color:var(--obsidian);transition:color .15s;}
+  .header-links a:hover{color:var(--petrol);}
+  .nav-dropdown{position:relative;}
+  .nav-dropdown-trigger{font-size:14px;font-weight:500;color:var(--obsidian);cursor:pointer;display:flex;align-items:center;gap:5px;transition:color .15s;background:none;border:none;font-family:'Inter',sans-serif;padding:0;}
+  .nav-dropdown-trigger:hover{color:var(--petrol);}
+  .nav-dropdown-trigger i{font-size:10px;transition:transform .15s;}
+  .nav-dropdown:hover .nav-dropdown-trigger i{transform:rotate(180deg);}
+  .nav-dropdown-menu{display:none;position:absolute;top:calc(100% + 14px);left:-16px;background:#fff;border:1px solid var(--line);border-radius:var(--radius-md);padding:6px;min-width:200px;box-shadow:0 4px 16px rgba(21,33,31,0.08);}
+  .nav-dropdown:hover .nav-dropdown-menu{display:block;}
+  .nav-dropdown-menu a{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:var(--radius-sm);font-size:13.5px;font-weight:500;text-decoration:none;color:var(--obsidian);transition:background .12s;white-space:nowrap;}
+  .nav-dropdown-menu a:hover{background:var(--offwhite);color:var(--petrol);}
+  .nav-dropdown-menu a i{color:var(--petrol);font-size:13px;width:16px;text-align:center;}
+  .nav-dropdown-menu .menu-divider{height:1px;background:var(--line);margin:4px 0;}
+  .header-cta{display:flex;align-items:center;gap:8px;padding:10px 20px;background:var(--petrol);color:#fff;border-radius:var(--radius-sm);text-decoration:none;font-size:14px;font-weight:600;transition:background .15s;}
+  .header-cta:hover{background:var(--obsidian);}
+
+  /* ── LAYOUT ── */
+  .page-wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
+  section{padding:72px 0;border-bottom:1px solid var(--line);}
+  section:last-of-type{border-bottom:none;}
+  .eyebrow{font-size:12px;font-weight:600;color:var(--petrol);text-transform:uppercase;letter-spacing:0.7px;margin-bottom:10px;}
+  .section-title{font-size:26px;font-weight:600;letter-spacing:-0.4px;margin-bottom:12px;}
+  .section-sub{font-size:15.5px;color:var(--text-soft);max-width:600px;margin-bottom:40px;line-height:1.6;}
+
+  /* ── BUTTONS ── */
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 22px;border-radius:var(--radius-sm);border:1.5px solid var(--petrol);font-family:'Inter',sans-serif;font-size:14px;font-weight:600;cursor:pointer;text-decoration:none;transition:all .15s;}
+  .btn-primary{background:var(--petrol);color:#fff;}
+  .btn-primary:hover{background:var(--obsidian);border-color:var(--obsidian);}
+  .btn-outline{background:transparent;color:var(--petrol);}
+  .btn-outline:hover{background:#fff;}
+  .btn i{font-size:14px;}
+
+  /* ── HERO ── */
+  .hero{padding:80px 0 72px;border-bottom:1px solid var(--line);}
+  .hero-inner{max-width:720px;}
+  .hero-title{font-size:42px;font-weight:600;letter-spacing:-0.9px;line-height:1.12;margin-bottom:20px;}
+  .hero-title em{font-style:normal;color:var(--petrol);}
+  .hero-text{font-size:16px;color:var(--text-soft);margin-bottom:32px;line-height:1.65;max-width:580px;}
+  .hero-ctas{display:flex;gap:12px;flex-wrap:wrap;align-items:center;}
+  .hero-back{font-size:13.5px;color:var(--text-soft);text-decoration:none;display:inline-flex;align-items:center;gap:6px;margin-bottom:20px;}
+  .hero-back:hover{color:var(--petrol);}
+  .hero-stat-row{display:flex;gap:32px;margin-top:40px;padding-top:32px;border-top:1px solid var(--line);}
+  .hero-stat-val{font-size:28px;font-weight:700;color:var(--petrol);letter-spacing:-0.5px;line-height:1;}
+  .hero-stat-label{font-size:12.5px;color:var(--text-soft);margin-top:5px;max-width:160px;line-height:1.4;}
+
+  /* ── LEGITIMAÇÃO ── */
+  .legit-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius-md);overflow:hidden;}
+  .legit-col{background:var(--offwhite);padding:36px;}
+  .legit-col.is-reality{background:#fff;}
+  .legit-label{font-size:11px;font-weight:600;letter-spacing:0.5px;text-transform:uppercase;margin-bottom:18px;display:flex;align-items:center;gap:8px;}
+  .legit-label.myth{color:var(--text-soft);}
+  .legit-label.reality{color:var(--petrol);}
+  .legit-label i{font-size:12px;}
+  .legit-col h3{font-size:18px;font-weight:600;margin-bottom:12px;line-height:1.35;}
+  .legit-col p{font-size:14.5px;color:var(--text-soft);line-height:1.65;margin-bottom:12px;}
+  .legit-col p:last-child{margin-bottom:0;}
+
+  /* ── MECANISMOS (dark section) ── */
+  .mecanismos-section{
+    background:var(--obsidian);
+    margin:0 -24px;
+    padding:72px 24px;
+    border-bottom:none;
+  }
+  .mecanismos-section .eyebrow{color:var(--skyblue);}
+  .mecanismos-section .section-title{color:#fff;}
+  .mecanismos-section .section-sub{color:rgba(255,255,255,0.6);}
+  .mec-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.08);border-radius:var(--radius-md);overflow:hidden;}
+  .mec-card{background:rgba(255,255,255,0.04);padding:32px;}
+  .mec-card:hover{background:rgba(255,255,255,0.07);}
+  .mec-num{
+    font-size:11px;font-weight:700;color:var(--skyblue);
+    text-transform:uppercase;letter-spacing:0.5px;
+    margin-bottom:20px;display:flex;align-items:center;gap:8px;
+  }
+  .mec-num::after{content:'';flex:1;height:1px;background:rgba(255,255,255,0.08);}
+  .mec-card h3{font-size:16px;font-weight:600;color:#fff;margin-bottom:10px;line-height:1.35;}
+  .mec-card p{font-size:13.5px;color:rgba(255,255,255,0.6);line-height:1.65;}
+  .mec-card p strong{color:rgba(255,255,255,0.9);font-weight:600;}
+
+  /* ── PERFIS ── */
+  .perfis-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .perfil-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius-md);padding:28px;}
+  .perfil-tag{
+    display:inline-flex;align-items:center;gap:6px;
+    font-size:11px;font-weight:600;color:var(--petrol);
+    background:var(--offwhite);border:1px solid var(--line);
+    border-radius:var(--radius-sm);padding:4px 10px;margin-bottom:16px;
+  }
+  .perfil-tag i{font-size:10px;}
+  .perfil-card h3{font-size:15.5px;font-weight:600;margin-bottom:8px;line-height:1.35;}
+  .perfil-card p{font-size:13.5px;color:var(--text-soft);line-height:1.6;}
+
+  /* ── PAPEL DA Q&L ── */
+  .ql-process{max-width:680px;}
+  .ql-step{display:flex;gap:24px;padding:24px 0;border-top:1px solid var(--line);}
+  .ql-step:last-child{border-bottom:1px solid var(--line);}
+  .ql-step-num{
+    min-width:32px;height:32px;
+    border:1.5px solid var(--petrol);border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-size:12px;font-weight:700;color:var(--petrol);
+    flex-shrink:0;margin-top:2px;
+  }
+  .ql-step-content h3{font-size:15.5px;font-weight:600;margin-bottom:6px;}
+  .ql-step-content p{font-size:14px;color:var(--text-soft);line-height:1.6;}
+  .ql-aside{
+    background:#fff;border:1px solid var(--line);border-radius:var(--radius-md);
+    padding:32px;max-width:360px;height:fit-content;
+    position:sticky;top:96px;
+  }
+  .ql-aside h3{font-size:17px;font-weight:600;margin-bottom:10px;}
+  .ql-aside p{font-size:14px;color:var(--text-soft);line-height:1.6;margin-bottom:24px;}
+  .ql-aside-note{font-size:12px;color:var(--text-soft);margin-top:16px;padding-top:16px;border-top:1px solid var(--line);display:flex;gap:8px;align-items:flex-start;line-height:1.5;}
+  .ql-aside-note i{color:var(--skyblue);margin-top:2px;flex-shrink:0;}
+  .ql-grid{display:grid;grid-template-columns:1fr 360px;gap:48px;align-items:start;}
+
+  /* ── CTA FINAL ── */
+  .cta-section{
+    background:var(--petrol);
+    margin:0 -24px;
+    padding:72px 24px;
+    text-align:center;
+    border-bottom:none;
+  }
+  .cta-section .eyebrow{color:var(--skyblue);}
+  .cta-section h2{font-size:28px;font-weight:600;color:#fff;letter-spacing:-0.4px;margin-bottom:12px;}
+  .cta-section p{font-size:15.5px;color:rgba(255,255,255,0.7);max-width:500px;margin:0 auto 32px;line-height:1.6;}
+  .btn-white{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:var(--radius-sm);border:1.5px solid rgba(255,255,255,0.3);background:#fff;color:var(--petrol);font-family:'Inter',sans-serif;font-size:14px;font-weight:600;text-decoration:none;transition:all .15s;}
+  .btn-white:hover{background:rgba(255,255,255,0.92);}
+
+  /* ── FOOTER ── */
+  footer{background:var(--obsidian);color:#fff;padding:48px 0 24px;}
+  .footer-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-bottom:32px;}
+  .footer-col h4{font-size:11px;text-transform:uppercase;letter-spacing:0.7px;color:var(--skyblue);margin-bottom:14px;font-weight:600;}
+  .footer-col a,.footer-col p{display:block;font-size:13.5px;color:rgba(255,255,255,0.7);text-decoration:none;margin-bottom:8px;}
+  .footer-col a:hover{color:#fff;}
+  .footer-bottom{border-top:1px solid rgba(255,255,255,0.12);padding-top:20px;font-size:12px;color:rgba(255,255,255,0.4);}
+
+  /* ── RESPONSIVE ── */
+  @media(max-width:900px){
+    .hero-title{font-size:30px;}
+    .legit-grid{grid-template-columns:1fr;}
+    .mec-grid{grid-template-columns:1fr;}
+    .perfis-grid{grid-template-columns:1fr;}
+    .ql-grid{grid-template-columns:1fr;}
+    .ql-aside{position:static;max-width:100%;}
+    .hero-stat-row{gap:20px;flex-wrap:wrap;}
+    .footer-grid{grid-template-columns:1fr;}
+    .header-links{display:none;}
+    .mecanismos-section{margin:0 -24px;}
+    .cta-section{margin:0 -24px;}
+  }
+  @media(max-width:560px){
+    .hero-ctas{flex-direction:column;align-items:flex-start;}
+    section{padding:56px 0;}
+    .mecanismos-section{padding:56px 24px;}
+    .cta-section{padding:56px 24px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ══ HEADER ══ -->
+<header>
+  <div class="header-inner">
+    <a href="/" class="brand">
+      <div class="brand-icon"><div class="brand-icon-vline"></div></div>
+      <span class="brand-name">quadra e lote</span>
+    </a>
+    <div class="header-nav">
+      <nav class="header-links">
+        <a href="/#sobre">sobre</a>
+        <div class="nav-dropdown">
+          <button class="nav-dropdown-trigger">soluções <i class="fa-solid fa-chevron-down"></i></button>
+          <div class="nav-dropdown-menu">
+            <a href="/compra-direta"><i class="fa-solid fa-file-contract"></i> compra direta</a>
+            <div class="menu-divider"></div>
+            <a href="/credito-imobiliario"><i class="fa-solid fa-landmark"></i> crédito imobiliário</a>
+            <a href="/consorcio"><i class="fa-solid fa-piggy-bank"></i> consórcio de imóveis</a>
+          </div>
+        </div>
+        <a href="/#como-funciona">como funciona</a>
+        <a href="/#proprietarios">proprietários</a>
+      </nav>
+      <a href="https://wa.me/553128881091?text=Olá!%20Gostaria%20de%20conversar%20sobre%20uma%20negociação%20de%20compra%20direta%20de%20imóvel." target="_blank" class="header-cta">
+        <i class="fa-brands fa-whatsapp"></i> falar agora
+      </a>
+    </div>
+  </div>
+</header>
+
+<div class="page-wrap">
+
+  <!-- ══ HERO ══ -->
+  <section class="hero">
+    <div class="hero-inner">
+      <a href="/" class="hero-back"><i class="fa-solid fa-arrow-left"></i> voltar ao início</a>
+      <div class="eyebrow">compra direta</div>
+      <h1 class="hero-title">negociar diretamente entre comprador e vendedor é <em>mais seguro do que parece</em> — quando bem estruturado</h1>
+      <p class="hero-text">O parcelamento direto é uma modalidade consolidada no mercado imobiliário brasileiro. A percepção de risco não vem do instrumento em si — vem da ausência de estrutura jurídica adequada. Com a documentação certa e o contrato correto, é uma das formas mais eficientes de fechar um negócio de médio ou alto valor.</p>
+      <div class="hero-ctas">
+        <a href="https://wa.me/553128881091?text=Olá!%20Gostaria%20de%20conversar%20sobre%20uma%20negociação%20de%20compra%20direta%20de%20imóvel." target="_blank" class="btn btn-primary">
+          <i class="fa-brands fa-whatsapp"></i> conversar sobre o meu caso
+        </a>
+        <a href="#mecanismos" class="btn btn-outline"><i class="fa-solid fa-arrow-down"></i> como funciona</a>
+      </div>
+      <div class="hero-stat-row">
+        <div>
+          <div class="hero-stat-val">~40%</div>
+          <div class="hero-stat-label">das negociações em algumas regiões envolvem parcelamento direto, segundo o CRECI-SP</div>
+        </div>
+        <div>
+          <div class="hero-stat-val">0</div>
+          <div class="hero-stat-label">instituições financeiras intermediando — a negociação é entre as partes</div>
+        </div>
+        <div>
+          <div class="hero-stat-val">3</div>
+          <div class="hero-stat-label">mecanismos jurídicos que garantem segurança para comprador e vendedor</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ LEGITIMAÇÃO ══ -->
+  <section id="contexto">
+    <div class="eyebrow">o que é</div>
+    <h2 class="section-title">parcelamento direto — o que é e o que não é</h2>
+    <p class="section-sub">A maioria dos compradores de alto padrão tem uma imagem distorcida dessa modalidade. Vale desfazer antes de avançar.</p>
+    <div class="legit-grid">
+      <div class="legit-col">
+        <div class="legit-label myth"><i class="fa-solid fa-circle-xmark"></i> percepção equivocada</div>
+        <h3>"é coisa de quem não conseguiu aprovação bancária"</h3>
+        <p>O parcelamento direto carrega uma associação histórica com compradores que não têm acesso ao crédito ou com vendedores em situação de dificuldade financeira.</p>
+        <p>Essa percepção é imprecisa — e cada vez mais distante da realidade do segmento de médio e alto padrão, onde a modalidade cresce por motivos estratégicos, não por falta de alternativa.</p>
+      </div>
+      <div class="legit-col is-reality">
+        <div class="legit-label reality"><i class="fa-solid fa-circle-check"></i> como é na prática</div>
+        <h3>É uma escolha estratégica para negociações acima de um determinado valor</h3>
+        <p>O banco não é parte obrigatória de uma transação imobiliária. Quando comprador e vendedor têm capacidade e interesse de negociar diretamente, o resultado costuma ser mais flexível, mais ágil e com menor custo total para ambos.</p>
+        <p>O que torna a operação segura não é a presença do banco — é a qualidade da estrutura jurídica: auditoria documental, contrato adequado e registro correto.</p>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- ══ MECANISMOS (dark section) ══ -->
+<div class="mecanismos-section" id="mecanismos">
+  <div class="page-wrap">
+    <div class="eyebrow">estrutura jurídica</div>
+    <h2 class="section-title">os três mecanismos que garantem a operação</h2>
+    <p class="section-sub">A segurança do parcelamento direto não depende do banco — depende de quais instrumentos foram usados no contrato.</p>
+    <div class="mec-grid">
+      <div class="mec-card">
+        <div class="mec-num">01</div>
+        <h3>escritura pública com cláusula resolutiva</h3>
+        <p>A escritura pode ser lavrada desde o início — com o comprador já registrado como proprietário na matrícula. A <strong>cláusula resolutiva</strong> garante que, em caso de inadimplência, o imóvel retorna ao vendedor sem necessidade de processo judicial longo. O negócio se desfaz automaticamente pelo descumprimento.</p>
+      </div>
+      <div class="mec-card">
+        <div class="mec-num">02</div>
+        <h3>alienação fiduciária</h3>
+        <p>O imóvel fica <strong>alienado ao vendedor</strong> até a quitação total. Isso impede que o comprador transfira o bem para terceiros ou ofereça como garantia em outra operação sem consentimento. É o mesmo mecanismo que os bancos usam no financiamento — aplicado aqui diretamente entre as partes.</p>
+      </div>
+      <div class="mec-card">
+        <div class="mec-num">03</div>
+        <h3>averbação na matrícula</h3>
+        <p>O compromisso de compra e venda <strong>averbado na matrícula</strong> torna a transação pública — o que impede que o imóvel responda por dívidas futuras do vendedor e protege o comprador de eventuais penhoras ou indisponibilidades que surjam depois da assinatura do contrato.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page-wrap">
+
+  <!-- ══ PERFIS ══ -->
+  <section id="perfis">
+    <div class="eyebrow">para quem faz sentido</div>
+    <h2 class="section-title">dois lados da mesma negociação</h2>
+    <p class="section-sub">O parcelamento direto serve tanto a quem compra quanto a quem vende — com lógicas distintas para cada parte.</p>
+    <div class="perfis-grid">
+
+      <div class="perfil-card">
+        <div class="perfil-tag"><i class="fa-solid fa-user"></i> comprador</div>
+        <h3>quer adquirir sem depender de aprovação bancária — ou com condições que o banco não oferece</h3>
+        <p>Imóveis comerciais, industriais e terrenos têm financiamento bancário mais restrito e com taxas mais altas do que residencial. O parcelamento direto abre negociações que o banco simplesmente não viabiliza, ou viabiliza com condições menos atraentes. Para o comprador que tem capacidade de honrar parcelas diretamente, é frequentemente a opção mais eficiente.</p>
+      </div>
+
+      <div class="perfil-card">
+        <div class="perfil-tag"><i class="fa-solid fa-key"></i> vendedor</div>
+        <h3>prefere receber parcelado por razões fiscais, patrimoniais ou de fluxo de caixa</h3>
+        <p>Receber o valor integral à vista nem sempre é o cenário ideal para o vendedor. Há casos em que parcelar o recebimento tem vantagens tributárias, facilita a sucessão patrimonial ou simplesmente amplia o universo de compradores qualificados — aumentando a liquidez do ativo sem reduzir o valor.</p>
+      </div>
+
+      <div class="perfil-card">
+        <div class="perfil-tag"><i class="fa-solid fa-building"></i> imóvel comercial ou industrial</div>
+        <h3>onde o financiamento bancário é mais restrito ou tem condições desvantajosas</h3>
+        <p>Galpões, salas comerciais, terrenos industriais e lajes corporativas raramente se encaixam bem nos produtos bancários padrão. O parcelamento direto é, nesse segmento, a via que efetivamente funciona — e onde a estruturação jurídica adequada faz a diferença entre uma operação segura e uma litigiosa.</p>
+      </div>
+
+      <div class="perfil-card">
+        <div class="perfil-tag"><i class="fa-solid fa-handshake"></i> negociação direta entre as partes</div>
+        <h3>quando comprador e vendedor querem flexibilidade nas condições sem depender de um terceiro</h3>
+        <p>Entrada, número de parcelas, indexador, prazo — tudo é negociável diretamente. Sem as restrições de prazo, renda mínima e garantias exigidas pelos bancos, a negociação pode ser moldada ao perfil específico das duas partes. Isso é especialmente relevante em imóveis de valor mais alto, onde pequenas diferenças nas condições representam valores significativos.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ PAPEL DA Q&L ══ -->
+  <section id="quadra-e-lote">
+    <div class="eyebrow">como atuamos</div>
+    <h2 class="section-title">o papel da Quadra e Lote na operação</h2>
+    <p class="section-sub">Não somos apenas intermediários. Cada etapa tem uma função específica de proteção para as duas partes.</p>
+    <div class="ql-grid">
+      <div class="ql-process">
+
+        <div class="ql-step">
+          <div class="ql-step-num">1</div>
+          <div class="ql-step-content">
+            <h3>auditoria documental antes de qualquer negociação</h3>
+            <p>Verificamos a matrícula atualizada, certidões de débito (IPTU, condomínio), situação de eventuais ônus e a cadeia dominial do imóvel. Nenhuma negociação avança sem que o ativo esteja documentalmente limpo. Isso protege o comprador — e o vendedor de uma venda que pode ser questionada depois.</p>
+          </div>
+        </div>
+
+        <div class="ql-step">
+          <div class="ql-step-num">2</div>
+          <div class="ql-step-content">
+            <h3>estruturação das condições e do instrumento jurídico</h3>
+            <p>Definimos junto às partes o modelo mais adequado — cláusula resolutiva ou alienação fiduciária — e encaminhamos para elaboração por advogado imobiliário especializado. O contrato reflete exatamente a negociação fechada, não um modelo genérico. Essa é a etapa que mais pessoas pulam e que mais gera problema.</p>
+          </div>
+        </div>
+
+        <div class="ql-step">
+          <div class="ql-step-num">3</div>
+          <div class="ql-step-content">
+            <h3>acompanhamento até a escritura e o registro</h3>
+            <p>Coordenamos o processo com o cartório de notas, verificamos o recolhimento do ITBI e acompanhamos o registro no cartório de imóveis. A operação só está concluída quando o ato está na matrícula — não na assinatura do contrato particular.</p>
+          </div>
+        </div>
+
+        <div class="ql-step">
+          <div class="ql-step-num">4</div>
+          <div class="ql-step-content">
+            <h3>landing page exclusiva para o imóvel</h3>
+            <p>Cada imóvel que passa pela Quadra e Lote ganha uma página própria com fotos, plantas, localização, valores e QR code físico no local. Isso acelera a qualificação de compradores e reduz o tempo do ativo parado — sem depender de portais genéricos ou da reputação de um corretor específico.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="ql-aside">
+        <h3>falar sobre o seu caso</h3>
+        <p>Cada operação tem suas próprias particularidades — tipo de imóvel, valor, perfil das partes, prazo. Uma conversa de 15 minutos é suficiente para entender o que faz sentido para a sua situação.</p>
+        <a href="https://wa.me/553128881091?text=Olá!%20Gostaria%20de%20conversar%20sobre%20uma%20negociação%20de%20compra%20direta%20de%20imóvel." target="_blank" class="btn btn-primary" style="width:100%;justify-content:center;">
+          <i class="fa-brands fa-whatsapp"></i> iniciar conversa
+        </a>
+        <div class="ql-aside-note">
+          <i class="fa-solid fa-shield-halved"></i>
+          <span>Sem compromisso. Entendemos o seu caso antes de qualquer proposta.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- ══ CTA FINAL ══ -->
+<div class="cta-section">
+  <div class="page-wrap">
+    <div class="eyebrow">próximo passo</div>
+    <h2>tem um imóvel ou uma negociação em andamento?</h2>
+    <p>Nos conte o que está em jogo — tipo de imóvel, valor aproximado e onde está no processo. A partir daí, orientamos o caminho mais adequado.</p>
+    <a href="https://wa.me/553128881091?text=Olá!%20Gostaria%20de%20conversar%20sobre%20uma%20negociação%20de%20compra%20direta%20de%20imóvel." target="_blank" class="btn-white">
+      <i class="fa-brands fa-whatsapp"></i> conversar com a Quadra e Lote
+    </a>
+  </div>
+</div>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="page-wrap">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>quadra e lote</h4>
+        <a href="/#sobre">sobre a marca</a>
+        <a href="/compra-direta">compra direta</a>
+        <a href="/credito-imobiliario">crédito imobiliário</a>
+        <a href="/consorcio">consórcio de imóveis</a>
+        <a href="/#proprietarios">para proprietários</a>
+      </div>
+      <div class="footer-col">
+        <h4>contato</h4>
+        <a href="https://wa.me/553128881091" target="_blank">(31) 2888-1091</a>
+        <a href="mailto:contato@quadraelote.com.br">contato@quadraelote.com.br</a>
+      </div>
+      <div class="footer-col">
+        <h4>quadra e lote negócios imobiliários</h4>
+        <p>Belo Horizonte, MG</p>
+        <p>quadraelote.com.br</p>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2025 Quadra e Lote Negócios Imobiliários. Todos os direitos reservados.</div>
+  </div>
+</footer>
+
+</body>
+</html>

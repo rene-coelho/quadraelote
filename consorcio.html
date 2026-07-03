@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Consórcio de Imóveis — Quadra e Lote</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+  :root{
+    --obsidian:#15211f;
+    --petrol:#1a3a5f;
+    --skyblue:#60a8c9;
+    --offwhite:#FAFAF7;
+    --line:#dedcd4;
+    --text-soft:#5a5a55;
+    --radius-sm:4px;
+    --radius-md:6px;
+    --maxw:1180px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{
+    font-family:'Inter',sans-serif;
+    color:var(--obsidian);
+    background:var(--offwhite);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{display:block;max-width:100%;}
+  a{color:inherit;}
+
+  /* ── HEADER ── */
+  header{
+    background:var(--offwhite);
+    border-bottom:1px solid var(--line);
+    position:sticky; top:0; z-index:200;
+  }
+  .header-inner{
+    max-width:var(--maxw); margin:0 auto;
+    padding:18px 24px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .brand{display:flex; align-items:center; gap:10px; text-decoration:none;}
+  .brand-icon{
+    width:30px; height:30px;
+    border:2px solid var(--obsidian); border-radius:var(--radius-sm);
+    position:relative; overflow:hidden; flex-shrink:0;
+  }
+  .brand-icon::before{content:''; position:absolute; left:0; bottom:0; width:50%; height:50%; background:var(--petrol);}
+  .brand-icon::after{content:''; position:absolute; left:0; top:50%; width:100%; height:1px; background:var(--obsidian);}
+  .brand-icon-vline{position:absolute; top:0; left:50%; width:1px; height:100%; background:var(--obsidian);}
+  .brand-name{font-size:17px; font-weight:600; letter-spacing:-0.2px;}
+  .header-nav{display:flex; align-items:center; gap:28px;}
+  .header-links{display:flex; align-items:center; gap:24px;}
+  .header-links a{font-size:14px; font-weight:500; text-decoration:none; color:var(--obsidian); transition:color .15s;}
+  .header-links a:hover{color:var(--petrol);}
+  .header-cta{
+    display:flex; align-items:center; gap:8px;
+    padding:10px 20px; background:var(--petrol); color:#fff;
+    border-radius:var(--radius-sm); text-decoration:none;
+    font-size:14px; font-weight:600; transition:background .15s;
+  }
+  .header-cta:hover{background:var(--obsidian);}
+
+  /* ── LAYOUT ── */
+  .page-wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px;}
+  section{padding:72px 0; border-bottom:1px solid var(--line); scroll-margin-top:80px;}
+  section:last-of-type{border-bottom:none;}
+
+  .eyebrow{
+    font-size:12px; font-weight:600; color:var(--petrol);
+    text-transform:uppercase; letter-spacing:0.7px; margin-bottom:10px;
+  }
+  .section-title{font-size:26px; font-weight:600; letter-spacing:-0.4px; margin-bottom:12px;}
+  .section-sub{font-size:15.5px; color:var(--text-soft); max-width:600px; margin-bottom:40px; line-height:1.6;}
+
+  /* ── BUTTONS ── */
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:8px;
+    padding:13px 22px; border-radius:var(--radius-sm);
+    border:1.5px solid var(--petrol);
+    font-family:'Inter',sans-serif; font-size:14px; font-weight:600;
+    cursor:pointer; text-decoration:none; transition:all .15s;
+  }
+  .btn-primary{background:var(--petrol); color:#fff;}
+  .btn-primary:hover{background:var(--obsidian); border-color:var(--obsidian);}
+  .btn-outline{background:transparent; color:var(--petrol);}
+  .btn-outline:hover{background:#fff;}
+  .btn i{font-size:14px;}
+
+  /* ── HERO ── */
+  .hero{padding:80px 0 72px; border-bottom:1px solid var(--line);}
+  .hero-inner{max-width:680px;}
+  .hero-title{
+    font-size:42px; font-weight:600; letter-spacing:-0.9px;
+    line-height:1.12; margin-bottom:20px;
+  }
+  .hero-text{font-size:16px; color:var(--text-soft); margin-bottom:32px; line-height:1.65;}
+  .hero-ctas{display:flex; gap:12px; flex-wrap:wrap; align-items:center;}
+  .hero-back{font-size:13.5px; color:var(--text-soft); text-decoration:none; display:inline-flex; align-items:center; gap:6px;}
+  .hero-back:hover{color:var(--petrol);}
+
+  /* ── MISCONCEPTION SECTION ── */
+  .misconception-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:1px;
+    background:var(--line); border:1px solid var(--line);
+    border-radius:var(--radius-md); overflow:hidden;
+  }
+  .misc-col{background:var(--offwhite); padding:32px;}
+  .misc-col.is-reality{background:#fff;}
+  .misc-label{
+    font-size:11px; font-weight:600; letter-spacing:0.5px;
+    text-transform:uppercase; margin-bottom:16px;
+    display:flex; align-items:center; gap:8px;
+  }
+  .misc-label.myth{color:var(--text-soft);}
+  .misc-label.reality{color:var(--petrol);}
+  .misc-label i{font-size:12px;}
+  .misc-col h3{font-size:17px; font-weight:600; margin-bottom:10px; line-height:1.35;}
+  .misc-col p{font-size:14px; color:var(--text-soft); line-height:1.6;}
+
+  /* ── PROFILES ── */
+  .profiles-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px;}
+  .profile-card{
+    border:1px solid var(--line); border-radius:var(--radius-md);
+    background:#fff; padding:28px;
+  }
+  .profile-card i{color:var(--petrol); font-size:18px; margin-bottom:16px; display:block;}
+  .profile-card h3{font-size:15px; font-weight:600; margin-bottom:8px; line-height:1.35;}
+  .profile-card p{font-size:13.5px; color:var(--text-soft); line-height:1.6;}
+
+  /* ── STEPS ── */
+  .steps-flow{display:grid; grid-template-columns:repeat(4,1fr); gap:0; position:relative;}
+  .steps-flow::before{
+    content:''; position:absolute; top:28px; left:calc(12.5% + 14px); right:calc(12.5% + 14px);
+    height:1px; background:var(--line); z-index:0;
+  }
+  .step-item{padding:0 16px; text-align:center; position:relative; z-index:1;}
+  .step-dot{
+    width:28px; height:28px; border-radius:50%;
+    background:#fff; border:1.5px solid var(--petrol);
+    display:flex; align-items:center; justify-content:center;
+    margin:0 auto 20px; font-size:11px; font-weight:700;
+    color:var(--petrol);
+  }
+  .step-item.is-partner .step-dot{background:var(--petrol); color:#fff; border-color:var(--petrol);}
+  .step-item h3{font-size:14px; font-weight:600; margin-bottom:6px;}
+  .step-item p{font-size:13px; color:var(--text-soft); line-height:1.55;}
+  .step-badge{
+    display:inline-block; margin-top:10px;
+    font-size:11px; font-weight:600; color:var(--petrol);
+    background:var(--offwhite); border:1px solid var(--line);
+    border-radius:var(--radius-sm); padding:3px 8px;
+  }
+
+  /* ── PARTNER BLOCK ── */
+  .partner-block{
+    display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center;
+  }
+  .partner-block-text p{
+    font-size:15.5px; color:#363633;
+    margin-bottom:16px; line-height:1.65;
+  }
+  .partner-block-text p:last-child{margin-bottom:0;}
+  .partner-stats{
+    display:grid; grid-template-columns:1fr 1fr; gap:1px;
+    background:var(--line); border:1px solid var(--line);
+    border-radius:var(--radius-md); overflow:hidden;
+  }
+  .pstat{background:#fff; padding:24px;}
+  .pstat-val{font-size:26px; font-weight:700; color:var(--petrol); letter-spacing:-0.5px; line-height:1;}
+  .pstat-label{font-size:12.5px; color:var(--text-soft); margin-top:6px;}
+  .bacen-note{
+    grid-column:1/-1; background:var(--offwhite);
+    display:flex; gap:10px; align-items:flex-start;
+    padding:16px 20px; font-size:13px; color:var(--text-soft); line-height:1.5;
+  }
+  .bacen-note i{color:var(--skyblue); margin-top:2px; flex-shrink:0;}
+
+  /* ── FAQ ── */
+  .faq-list{list-style:none; border-top:1px solid var(--line);}
+  .faq-item{border-bottom:1px solid var(--line);}
+  .faq-q{
+    width:100%; background:none; border:none; cursor:pointer;
+    display:flex; justify-content:space-between; align-items:flex-start; gap:16px;
+    padding:20px 0; text-align:left;
+    font-family:'Inter',sans-serif; font-size:15px; font-weight:600;
+    color:var(--obsidian); line-height:1.4;
+  }
+  .faq-q i{color:var(--petrol); font-size:13px; margin-top:3px; flex-shrink:0; transition:transform .2s;}
+  .faq-item.open .faq-q i{transform:rotate(180deg);}
+  .faq-a{
+    display:none; padding-bottom:20px;
+    font-size:14.5px; color:var(--text-soft); line-height:1.65; max-width:680px;
+  }
+  .faq-item.open .faq-a{display:block;}
+
+  /* ── CTA FINAL ── */
+  .cta-final{
+    background:var(--petrol); color:#fff;
+    padding:64px 0; text-align:center;
+    border-bottom:none;
+  }
+  .cta-final .eyebrow{color:var(--skyblue);}
+  .cta-final .section-title{font-size:28px; color:#fff; margin-bottom:12px;}
+  .cta-final p{font-size:15.5px; color:rgba(255,255,255,0.7); margin-bottom:32px; max-width:520px; margin-left:auto; margin-right:auto; line-height:1.6;}
+  .btn-white{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:14px 28px; border-radius:var(--radius-sm);
+    border:1.5px solid rgba(255,255,255,0.4);
+    background:#fff; color:var(--petrol);
+    font-family:'Inter',sans-serif; font-size:14px; font-weight:600;
+    text-decoration:none; transition:all .15s;
+  }
+  .btn-white:hover{background:rgba(255,255,255,0.9);}
+  .cta-disclaimer{font-size:12px; color:rgba(255,255,255,0.45); margin-top:20px;}
+
+  /* ── FOOTER ── */
+  footer{background:var(--obsidian); color:#fff; padding:48px 0 24px;}
+  .footer-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:32px; margin-bottom:32px;}
+  .footer-col h4{font-size:11px; text-transform:uppercase; letter-spacing:0.7px; color:var(--skyblue); margin-bottom:14px; font-weight:600;}
+  .footer-col a, .footer-col p{display:block; font-size:13.5px; color:rgba(255,255,255,0.7); text-decoration:none; margin-bottom:8px;}
+  .footer-col a:hover{color:#fff;}
+  .footer-bottom{border-top:1px solid rgba(255,255,255,0.12); padding-top:20px; font-size:12px; color:rgba(255,255,255,0.4);}
+
+  /* ── RESPONSIVE ── */
+  @media(max-width:900px){
+    .hero-title{font-size:32px;}
+    .misconception-grid{grid-template-columns:1fr;}
+    .profiles-grid{grid-template-columns:1fr 1fr;}
+    .steps-flow{grid-template-columns:1fr 1fr; gap:24px;}
+    .steps-flow::before{display:none;}
+    .partner-block{grid-template-columns:1fr; gap:40px;}
+    .partner-stats{grid-template-columns:1fr 1fr;}
+    .footer-grid{grid-template-columns:1fr;}
+    .header-links{display:none;}
+  }
+  @media(max-width:560px){
+    .profiles-grid{grid-template-columns:1fr;}
+    .steps-flow{grid-template-columns:1fr;}
+    .hero-ctas{flex-direction:column; align-items:flex-start;}
+    section{padding:56px 0;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ══ HEADER ══ -->
+<header>
+  <div class="header-inner">
+    <a href="/" class="brand">
+      <div class="brand-icon"><div class="brand-icon-vline"></div></div>
+      <span class="brand-name">quadra e lote</span>
+    </a>
+    <div class="header-nav">
+      <nav class="header-links">
+        <a href="/#sobre">sobre</a>
+        <a href="/#solucoes">soluções</a>
+        <a href="/#como-funciona">como funciona</a>
+        <a href="/#proprietarios">proprietários</a>
+      </nav>
+      <a href="https://wa.me/553128881091?text=Olá!%20Gostaria%20de%20entender%20se%20o%20consórcio%20de%20imóveis%20faz%20sentido%20para%20minha%20situação." target="_blank" class="header-cta">
+        <i class="fa-brands fa-whatsapp"></i> falar agora
+      </a>
+    </div>
+  </div>
+</header>
+
+<div class="page-wrap">
+
+  <!-- ══ HERO ══ -->
+  <section class="hero" id="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">consórcio de imóveis</div>
+      <h1 class="hero-title">comprar sem juros é uma opção real para imóveis de médio e alto padrão</h1>
+      <p class="hero-text">Consórcio imobiliário não é uma modalidade restrita ao imóvel popular. Qualquer imóvel — residencial, comercial, industrial — pode ser adquirido por carta de crédito, sem juros e sem entrada obrigatória. A maioria dos compradores de alto padrão simplesmente não sabe disso.</p>
+      <div class="hero-ctas">
+        <a href="https://wa.me/553128881091?text=Olá!%20Gostaria%20de%20entender%20se%20o%20consórcio%20de%20imóveis%20faz%20sentido%20para%20minha%20situação." target="_blank" class="btn btn-primary">
+          <i class="fa-brands fa-whatsapp"></i> entender se faz sentido para mim
+        </a>
+        <a href="/" class="hero-back"><i class="fa-solid fa-arrow-left"></i> voltar ao início</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ DESCONSTRUINDO O MITO ══ -->
+  <section id="contexto">
+    <div class="eyebrow">o que mudou</div>
+    <h2 class="section-title">desfazendo uma percepção equivocada</h2>
+    <p class="section-sub">O consórcio imobiliário acumulou uma associação histórica com imóveis de menor valor. Isso não reflete como o produto funciona hoje.</p>
+    <div class="misconception-grid">
+      <div class="misc-col">
+        <div class="misc-label myth"><i class="fa-solid fa-circle-xmark"></i> percepção comum</div>
+        <h3>"consórcio é para quem não consegue financiamento"</h3>
+        <p>A ideia de que consórcio é um recurso de quem não tem acesso ao crédito bancário tradicional é uma herança dos anos 90, quando a modalidade era menos regulamentada e o perfil dos grupos era mais homogêneo.</p>
+      </div>
+      <div class="misc-col is-reality">
+        <div class="misc-label reality"><i class="fa-solid fa-circle-check"></i> como funciona hoje</div>
+        <h3>É um instrumento de planejamento para qualquer perfil de comprador</h3>
+        <p>Carta de crédito não tem teto de valor. Imóveis residenciais, comerciais, terrenos e galpões industriais podem ser adquiridos com consórcio. O comprador de alto padrão que pode planejar a aquisição com antecedência economiza substancialmente em custos de juros.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ PARA QUEM FAZ SENTIDO ══ -->
+  <section id="perfis">
+    <div class="eyebrow">perfil ideal</div>
+    <h2 class="section-title">para quem o consórcio faz sentido</h2>
+    <p class="section-sub">Não é a solução certa para todo mundo. Mas para esses perfis, é frequentemente a mais eficiente.</p>
+    <div class="profiles-grid">
+
+      <div class="profile-card">
+        <i class="fa-solid fa-calendar-days"></i>
+        <h3>quem planeja a aquisição com antecedência</h3>
+        <p>Se você tem 1 a 3 anos de horizonte e não precisa do imóvel imediatamente, o consórcio elimina os juros do financiamento — que ao longo de 20 anos podem dobrar o custo total do imóvel.</p>
+      </div>
+
+      <div class="profile-card">
+        <i class="fa-solid fa-building"></i>
+        <h3>quem busca imóvel comercial ou industrial</h3>
+        <p>Financiamento bancário para imóvel comercial tem condições mais restritivas e taxas mais altas do que para residencial. O consórcio trata todos os tipos da mesma forma — a carta de crédito é usada no imóvel de sua escolha.</p>
+      </div>
+
+      <div class="profile-card">
+        <i class="fa-solid fa-chart-line"></i>
+        <h3>quem quer acumular crédito imobiliário</h3>
+        <p>Investidores que montam carteiras de imóveis usam consórcio como instrumento de planejamento patrimonial — especialmente para aquisições futuras onde o timing exato não é crítico.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ COMO FUNCIONA ══ -->
+  <section id="como-funciona">
+    <div class="eyebrow">o processo</div>
+    <h2 class="section-title">da conversa inicial à contemplação</h2>
+    <p class="section-sub">O atendimento, a simulação e o acompanhamento do consórcio são feitos integralmente pela Ademicon. Nosso papel é entender sua situação e fazer a conexão certa.</p>
+    <div class="steps-flow">
+
+      <div class="step-item">
+        <div class="step-dot">01</div>
+        <h3>você indica interesse</h3>
+        <p>Conversa inicial com a Quadra e Lote para entender se o consórcio faz sentido para sua situação específica.</p>
+      </div>
+
+      <div class="step-item is-partner">
+        <div class="step-dot">02</div>
+        <h3>simulação e adesão</h3>
+        <p>A Ademicon faz a simulação completa, apresenta os grupos disponíveis e cuida de toda a contratação.</p>
+        <span class="step-badge">Ademicon Consórcio</span>
+      </div>
+
+      <div class="step-item is-partner">
+        <div class="step-dot">03</div>
+        <h3>participação no grupo</h3>
+        <p>Você passa a integrar um grupo de consorciados. Todo mês há uma assembleia com contemplações por sorteio ou lance.</p>
+        <span class="step-badge">Ademicon Consórcio</span>
+      </div>
+
+      <div class="step-item is-partner">
+        <div class="step-dot">04</div>
+        <h3>contemplação e uso da carta</h3>
+        <p>Com a carta de crédito em mãos, você compra o imóvel de sua escolha — em qualquer imobiliária, incluindo os ativos da Quadra e Lote.</p>
+        <span class="step-badge">Ademicon Consórcio</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ PARCEIRO ══ -->
+  <section id="parceiro">
+    <div class="eyebrow">parceiro especializado</div>
+    <h2 class="section-title">por que a Ademicon</h2>
+    <div class="partner-block">
+      <div class="partner-block-text">
+        <p>A Ademicon é a maior administradora independente de consórcio do Brasil em créditos ativos — com mais de 35 anos de operação, autorização do Banco Central e auditoria pela PwC.</p>
+        <p>Foi a escolha natural para estruturar essa parceria: administradora com histórico verificável, produto regulado e presença nacional para atender clientes em qualquer situação geográfica.</p>
+        <p>A simulação, o contrato, as assembleias mensais e o acompanhamento até a contemplação são feitos integralmente pela Ademicon. A Quadra e Lote atua na conexão e na orientação inicial.</p>
+      </div>
+      <div class="partner-stats">
+        <div class="pstat">
+          <div class="pstat-val">35+</div>
+          <div class="pstat-label">anos no mercado</div>
+        </div>
+        <div class="pstat">
+          <div class="pstat-val">R$145bi</div>
+          <div class="pstat-label">em créditos sob gestão</div>
+        </div>
+        <div class="pstat">
+          <div class="pstat-val">300+</div>
+          <div class="pstat-label">lojas no Brasil</div>
+        </div>
+        <div class="pstat">
+          <div class="pstat-val">BCB</div>
+          <div class="pstat-label">autorizada pelo Banco Central</div>
+        </div>
+        <div class="bacen-note">
+          <i class="fa-solid fa-shield-halved"></i>
+          <span>Administradora regulada e fiscalizada pelo Banco Central do Brasil (Cert. nº 92060028) e auditada pela PwC. Todos os grupos de consórcio operam conforme a Lei 11.795/2009.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FAQ ══ -->
+  <section id="faq">
+    <div class="eyebrow">dúvidas frequentes</div>
+    <h2 class="section-title">perguntas que chegam com frequência</h2>
+    <ul class="faq-list">
+
+      <li class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          posso usar a carta de crédito para imóvel comercial ou industrial?
+          <i class="fa-solid fa-chevron-down"></i>
+        </button>
+        <div class="faq-a">Sim. A carta de crédito do consórcio pode ser usada para qualquer tipo de imóvel: residencial, comercial, industrial, terreno, reforma ou construção. Não há restrição de tipo de imóvel — apenas os critérios da administradora para uso da carta no momento da contemplação.</div>
+      </li>
+
+      <li class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          o que é um lance e como ele acelera a contemplação?
+          <i class="fa-solid fa-chevron-down"></i>
+        </button>
+        <div class="faq-a">O lance é uma oferta de adiantamento de parcelas. Em cada assembleia mensal, os consorciados que oferecem um lance competem entre si — quem oferecer o maior percentual do valor do crédito é contemplado. É possível usar recursos próprios, FGTS ou o próprio saldo do grupo como lance. Para compradores com capital disponível, o lance é a estratégia para antecipar a contemplação sem depender do sorteio.</div>
+      </li>
+
+      <li class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          há garantia de data de contemplação?
+          <i class="fa-solid fa-chevron-down"></i>
+        </button>
+        <div class="faq-a">Não — e qualquer oferta que prometa data certa de contemplação deve ser encarada com cautela. A contemplação por sorteio é aleatória; pela estratégia de lance, depende do valor ofertado em relação aos demais participantes do grupo. O consórcio é um instrumento de planejamento de médio prazo, não de acesso imediato ao crédito.</div>
+      </li>
+
+      <li class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          qual é o custo real do consórcio em relação ao financiamento?
+          <i class="fa-solid fa-chevron-down"></i>
+        </button>
+        <div class="faq-a">No consórcio, o custo é composto por uma taxa de administração fixa — sem juros sobre o saldo devedor. No financiamento imobiliário, incide uma taxa de juros mensal sobre o saldo devedor durante toda a vigência do contrato, o que pode representar um custo total muito superior. A comparação exata depende do valor do imóvel, do prazo e das condições do momento — a Ademicon faz essa simulação completa gratuitamente.</div>
+      </li>
+
+    </ul>
+  </section>
+
+</div>
+
+<!-- ══ CTA FINAL ══ -->
+<section class="cta-final">
+  <div class="page-wrap">
+    <div class="eyebrow">próximo passo</div>
+    <h2 class="section-title">faz sentido para o seu caso?</h2>
+    <p>Uma conversa é suficiente para entender se o consórcio é o caminho certo para a sua situação — ou se a compra direta é a via mais adequada.</p>
+    <a href="https://wa.me/553128881091?text=Olá!%20Gostaria%20de%20entender%20se%20o%20consórcio%20de%20imóveis%20faz%20sentido%20para%20minha%20situação." target="_blank" class="btn-white">
+      <i class="fa-brands fa-whatsapp"></i> conversar com um especialista
+    </a>
+    <p class="cta-disclaimer">Simulação e contratação são feitas pela Ademicon Consórcio, parceira da Quadra e Lote.</p>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="page-wrap">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>quadra e lote</h4>
+        <a href="/#sobre">sobre a marca</a>
+        <a href="/#solucoes">soluções de aquisição</a>
+        <a href="/consorcio">consórcio de imóveis</a>
+        <a href="/#proprietarios">para proprietários</a>
+      </div>
+      <div class="footer-col">
+        <h4>contato</h4>
+        <a href="https://wa.me/553128881091" target="_blank">(31) 2888-1091</a>
+        <a href="mailto:contato@quadraelote.com.br">contato@quadraelote.com.br</a>
+      </div>
+      <div class="footer-col">
+        <h4>quadra e lote negócios imobiliários</h4>
+        <p>Belo Horizonte, MG</p>
+        <p>quadraelote.com.br</p>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2025 Quadra e Lote Negócios Imobiliários. Todos os direitos reservados.</div>
+  </div>
+</footer>
+
+<script>
+  function toggleFaq(btn){
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+    if(!isOpen) item.classList.add('open');
+  }
+</script>
+
+</body>
+</html>
