@@ -184,6 +184,13 @@
     padding:3px 8px;margin-top:2px;
   }
 
+  .tip-wrap{position:relative;display:inline-flex;align-items:center;}
+  .tip-icon{display:inline-flex;align-items:center;justify-content:center;width:15px;height:15px;border-radius:50%;border:1.5px solid var(--text-soft);color:var(--text-soft);font-size:9px;cursor:pointer;margin-left:5px;flex-shrink:0;line-height:1;}
+  .tip-icon:hover{border-color:var(--petrol);color:var(--petrol);}
+  .tip-box{display:none;position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);background:var(--obsidian);color:#fff;font-size:12px;line-height:1.5;padding:10px 13px;border-radius:var(--radius-md);width:240px;z-index:100;pointer-events:none;font-weight:400;}
+  .tip-box::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:5px solid transparent;border-top-color:var(--obsidian);}
+  .tip-wrap:hover .tip-box, .tip-wrap.open .tip-box{display:block;}
+
   .results-disclaimer{
     margin-top:16px;padding:14px 18px;
     background:#fff;border:1px solid var(--line);border-radius:var(--radius-md);
@@ -290,7 +297,7 @@
         <div class="sim-form-title">simule o financiamento</div>
 
         <div class="field">
-          <div class="field-label"><label>valor do imóvel <i class="fa-solid fa-circle-info" style="font-size:11px;color:var(--text-soft);cursor:help;" title="Valor total do imóvel que deseja adquirir"></i></label></div>
+          <div class="field-label"><label>valor do imóvel <span class="tip-wrap"><i class="fa-solid fa-circle-info tip-icon"></i><span class="tip-box">Valor total do imóvel que deseja adquirir.</span></span></label></div>
           <div class="input-wrap">
             <span class="input-prefix">R$</span>
             <input type="text" id="val-imovel" class="has-suffix" value="" placeholder="0" oninput="formatCurrency(this)" onblur="updatePct()">
@@ -299,7 +306,7 @@
 
         <div class="field">
           <div class="field-label">
-            <label>valor de entrada <i class="fa-solid fa-circle-info" style="font-size:11px;color:var(--text-soft);cursor:help;" title="Inclua FGTS se for utilizá-lo"></i></label>
+            <label>valor de entrada <span class="tip-wrap"><i class="fa-solid fa-circle-info tip-icon"></i><span class="tip-box">Inclua o FGTS se for utilizá-lo como parte da entrada.</span></span></label>
             <span class="field-hint">vai usar FGTS? inclua aqui</span>
           </div>
           <div class="input-wrap">
@@ -381,7 +388,7 @@
 <script>
 /* ── BANCOS ── */
 const BANKS = [
-  { id:'caixa',     name:'Caixa Econômica',  rate: 0.1119, table:'SAC',
+  { id:'caixa',     name:'Caixa',             rate: 0.1119, table:'SAC',
     logo: '/assets/img/bancos/caixa.svg' },
   { id:'santander', name:'Santander',         rate: 0.1199, table:'SAC',
     logo: '/assets/img/bancos/santander.svg' },
@@ -474,7 +481,7 @@ function simular(){
         <span style="font-size:14px;font-weight:600;color:var(--obsidian);">${b.name}</span>
       </div>
       <div class="bank-stat">
-        <div class="bank-stat-label">taxa efetiva <i class="fa-solid fa-circle-info" style="font-size:10px;color:var(--text-soft);cursor:help;" title="As taxas são indicativas e fornecidas pelos bancos. Podem variar conforme o perfil do comprador — nossos especialistas buscam as melhores condições para você."></i></div>
+        <div class="bank-stat-label">taxa efetiva <span class="tip-wrap"><i class="fa-solid fa-circle-info tip-icon"></i><span class="tip-box">As taxas são indicativas e fornecidas pelos bancos. Podem variar conforme o perfil do comprador — nossos especialistas buscam as melhores condições para você.</span></span></div>
         <div class="bank-stat-val highlight">${(b.rate*100).toFixed(2).replace('.',',')}% a.a.</div>
       </div>
       <div class="bank-stat">
@@ -486,7 +493,7 @@ function simular(){
         <div class="bank-stat-val">${fmtBRL(r.last)}</div>
       </div>
       <div class="bank-stat">
-        <div class="bank-stat-label">tabela <i class="fa-solid fa-circle-info" style="font-size:10px;color:var(--text-soft);cursor:help;" title="SAC — Sistema de Amortização Constante: parcelas decrescentes, com amortização fixa e juros reduzindo a cada mês. Geralmente resulta em menor custo total comparado à Tabela Price."></i></div>
+        <div class="bank-stat-label">tabela <span class="tip-wrap"><i class="fa-solid fa-circle-info tip-icon"></i><span class="tip-box">SAC — Sistema de Amortização Constante: parcelas decrescentes com amortização fixa e juros reduzindo a cada mês. Geralmente resulta em menor custo total.</span></span></div>
         <div class="bank-stat-badge">${b.table}</div>
       </div>`;
     container.appendChild(card);
@@ -511,6 +518,20 @@ document.addEventListener('mousedown', function(e){
   document.querySelectorAll('.nav-dropdown.open').forEach(function(dd){
     if(!dd.contains(e.target)) dd.classList.remove('open');
   });
+});
+
+// tooltips customizados
+document.addEventListener('click', function(e) {
+  const icon = e.target.closest('.tip-icon');
+  if (icon) {
+    const wrap = icon.closest('.tip-wrap');
+    const isOpen = wrap.classList.contains('open');
+    document.querySelectorAll('.tip-wrap.open').forEach(w => w.classList.remove('open'));
+    if (!isOpen) wrap.classList.add('open');
+    e.stopPropagation();
+    return;
+  }
+  document.querySelectorAll('.tip-wrap.open').forEach(w => w.classList.remove('open'));
 });
 </script>
 </body>
