@@ -54,6 +54,17 @@
   .header-links{display:flex; align-items:center; gap:24px;}
   .header-links a{font-size:14px; font-weight:500; text-decoration:none; color:var(--obsidian); transition:color .15s;}
   .header-links a:hover{color:var(--petrol);}
+  .nav-dropdown{position:relative;}
+  .nav-dropdown-trigger{font-size:14px;font-weight:500;color:var(--obsidian);cursor:pointer;display:flex;align-items:center;gap:5px;transition:color .15s;background:none;border:none;font-family:'Inter',sans-serif;padding:0;}
+  .nav-dropdown-trigger:hover{color:var(--petrol);}
+  .nav-dropdown-trigger i{font-size:10px;transition:transform .15s;}
+  .nav-dropdown:hover .nav-dropdown-trigger i{transform:rotate(180deg);}
+  .nav-dropdown-menu{display:none;position:absolute;top:calc(100% + 14px);left:-16px;background:#fff;border:1px solid var(--line);border-radius:var(--radius-md);padding:6px;min-width:200px;box-shadow:0 4px 16px rgba(21,33,31,0.08);}
+  .nav-dropdown:hover .nav-dropdown-menu{display:block;}
+  .nav-dropdown-menu a{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:var(--radius-sm);font-size:13.5px;font-weight:500;text-decoration:none;color:var(--obsidian);transition:background .12s;white-space:nowrap;}
+  .nav-dropdown-menu a:hover{background:var(--offwhite);color:var(--petrol);}
+  .nav-dropdown-menu a i{color:var(--petrol);font-size:13px;width:16px;text-align:center;}
+  .nav-dropdown-menu .menu-divider{height:1px;background:var(--line);margin:4px 0;}
   .header-cta{
     display:flex; align-items:center; gap:8px;
     padding:10px 20px; background:var(--petrol); color:#fff;
@@ -254,10 +265,15 @@
     </a>
     <div class="header-nav">
       <nav class="header-links">
-        <a href="/#sobre">sobre</a>
-        <a href="/#solucoes">soluções</a>
-        <a href="/#como-funciona">como funciona</a>
-        <a href="/#proprietarios">proprietários</a>
+        <div class="nav-dropdown">
+          <button class="nav-dropdown-trigger">soluções <i class="fa-solid fa-chevron-down"></i></button>
+          <div class="nav-dropdown-menu">
+            <a href="/compra-direta"><i class="fa-solid fa-file-contract"></i> compra direta</a>
+            <div class="menu-divider"></div>
+            <a href="/credito-imobiliario"><i class="fa-solid fa-landmark"></i> crédito imobiliário</a>
+            <a href="/consorcio"><i class="fa-solid fa-piggy-bank"></i> consórcio de imóveis</a>
+          </div>
+        </div>
       </nav>
       <a href="https://wa.me/553128881091?text=Olá!%20Gostaria%20de%20entender%20se%20o%20consórcio%20de%20imóveis%20faz%20sentido%20para%20minha%20situação." target="_blank" class="header-cta">
         <i class="fa-brands fa-whatsapp"></i> falar agora
