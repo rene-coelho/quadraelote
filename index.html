@@ -180,7 +180,7 @@
   .concept-list li i{color:var(--skyblue); font-size:11px; margin-top:4px; flex-shrink:0;}
 
   /* ── SOLUÇÕES ── */
-  .solucoes-grid{display:grid; grid-template-columns:1fr 1fr; gap:20px;}
+  .solucoes-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
   .solucao-card{
     border:1px solid var(--line); border-radius:var(--radius-md);
     background:#fff; padding:32px;
@@ -346,8 +346,6 @@
       <nav class="header-links">
         <a href="#sobre">sobre</a>
         <a href="#solucoes">soluções</a>
-        <a href="#como-funciona">como funciona</a>
-        <a href="#proprietarios">proprietários</a>
       </nav>
       <a href="https://wa.me/553128881091" target="_blank" class="header-cta">
         <i class="fa-brands fa-whatsapp"></i> falar agora
@@ -407,8 +405,8 @@
   <!-- ══ SOLUÇÕES ══ -->
   <section id="solucoes">
     <div class="eyebrow">soluções de aquisição</div>
-    <h2 class="section-title">dois caminhos para o seu imóvel</h2>
-    <p class="section-sub">Compra direta ou consórcio planejado — sem juros. Imóveis de médio e alto padrão podem ser adquiridos pelas duas vias. Assessoramos as duas.</p>
+    <h2 class="section-title">três caminhos para o seu imóvel</h2>
+    <p class="section-sub">Compra direta, crédito imobiliário ou consórcio — cada imóvel tem um caminho mais adequado. Assessoramos nas três vias.</p>
     <div class="solucoes-grid">
 
       <div class="solucao-card">
@@ -421,7 +419,20 @@
           <li><i class="fa-solid fa-circle-dot"></i> custos e taxas explícitos desde o primeiro contato</li>
           <li><i class="fa-solid fa-circle-dot"></i> aceita financiamento bancário e FGTS</li>
         </ul>
-        <a href="https://wa.me/553128881091?text=Olá!%20Tenho%20interesse%20em%20comprar%20um%20imóvel%20com%20a%20Quadra%20e%20Lote." target="_blank" class="btn btn-primary"><i class="fa-brands fa-whatsapp"></i> falar com um especialista</a>
+        <a href="compra-direta.html" class="btn btn-primary"><i class="fa-solid fa-arrow-right"></i> saiba mais</a>
+      </div>
+
+      <div class="solucao-card">
+        <div class="solucao-card-icon"><i class="fa-solid fa-landmark"></i></div>
+        <h3>crédito imobiliário</h3>
+        <p>Financiamento com assessoria especializada — comparamos as condições dos principais bancos e acompanhamos todo o processo de aprovação e contratação.</p>
+        <ul class="solucao-list">
+          <li><i class="fa-solid fa-circle-dot"></i> comparativo entre Caixa, Itaú, Bradesco e Santander</li>
+          <li><i class="fa-solid fa-circle-dot"></i> simulação SAC com parcelas decrescentes</li>
+          <li><i class="fa-solid fa-circle-dot"></i> aceita FGTS como entrada</li>
+          <li><i class="fa-solid fa-circle-dot"></i> acompanhamento até a assinatura do contrato</li>
+        </ul>
+        <a href="credito-imobiliario.html" class="btn btn-outline"><i class="fa-solid fa-arrow-right"></i> simular financiamento</a>
       </div>
 
       <div class="solucao-card">
@@ -434,7 +445,7 @@
           <li><i class="fa-solid fa-circle-dot"></i> contemplação por sorteio ou lance estratégico</li>
           <li><i class="fa-solid fa-circle-dot"></i> simulação e atendimento completo pela parceira especializada</li>
         </ul>
-        <a href="https://wa.me/553128881091?text=Olá!%20Gostaria%20de%20entender%20se%20o%20consórcio%20de%20imóveis%20faz%20sentido%20para%20minha%20situação." target="_blank" class="btn btn-outline"><i class="fa-brands fa-whatsapp"></i> entender se faz sentido para mim</a>
+        <a href="consorcio.html" class="btn btn-outline"><i class="fa-solid fa-arrow-right"></i> saiba mais</a>
         <div class="partner-badge"><i class="fa-solid fa-circle-check"></i> parceria: Ademicon Consórcio</div>
       </div>
 
@@ -555,28 +566,67 @@
       </div>
       <div class="field"><label>endereço aproximado</label><input type="text" id="p-endereco" placeholder="bairro, cidade" required></div>
       <div class="field"><label>mensagem (opcional)</label><textarea id="p-msg" placeholder="conte um pouco mais sobre o imóvel"></textarea></div>
-      <button type="submit" class="btn btn-primary btn-full"><i class="fa-solid fa-paper-plane"></i> enviar cadastro</button>
+      <div id="cadastro-feedback" style="display:none; padding:10px; border-radius:6px; font-size:14px; margin-bottom:12px;"></div>
+      <button type="submit" id="cadastro-btn" class="btn btn-primary btn-full"><i class="fa-solid fa-paper-plane"></i> enviar cadastro</button>
     </form>
   </div>
 </div>
 
 <script>
-  // fecha modal clicando no fundo
+  const SUPA_URL = 'https://frhhvwuafgkzvxjvihwp.supabase.co';
+  const SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZyaGh2d3VhZmdrenZ4anZpaHdwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODMwMjM1NDAsImV4cCI6MjA5ODU5OTU0MH0.rvkR9sBoNwP5lPAxiIL3KboPd7VWMMPCWT96JnGAgBk';
+
   document.getElementById('modalCadastro').addEventListener('click', function(e){
     if(e.target === this) this.classList.remove('active');
   });
 
-  // envia cadastro via WhatsApp
-  function enviarCadastro(e){
+  async function enviarCadastro(e){
     e.preventDefault();
-    const nome    = document.getElementById('p-nome').value;
-    const tel     = document.getElementById('p-tel').value;
-    const tipo    = document.getElementById('p-tipo').value;
-    const end     = document.getElementById('p-endereco').value;
-    const msg     = document.getElementById('p-msg').value;
-    const texto   = `Olá! Quero cadastrar um imóvel na Quadra e Lote.\nNome: ${nome}\nTelefone: ${tel}\nTipo: ${tipo}\nEndereço: ${end}${msg ? `\nMensagem: ${msg}` : ''}`;
-    window.open(`https://wa.me/553128881091?text=${encodeURIComponent(texto)}`, '_blank');
-    document.getElementById('modalCadastro').classList.remove('active');
+    const btn = document.getElementById('cadastro-btn');
+    const feedback = document.getElementById('cadastro-feedback');
+    const nome = document.getElementById('p-nome').value.trim();
+    const tel  = document.getElementById('p-tel').value.trim();
+    const tipo = document.getElementById('p-tipo').value;
+    const end  = document.getElementById('p-endereco').value.trim();
+    const msg  = document.getElementById('p-msg').value.trim();
+
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> enviando...';
+
+    try {
+      const res = await fetch(`${SUPA_URL}/rest/v1/leads_proprietarios`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'apikey': SUPA_KEY,
+          'Authorization': `Bearer ${SUPA_KEY}`,
+          'Prefer': 'return=minimal'
+        },
+        body: JSON.stringify({ nome, telefone: tel, tipo_imovel: tipo, endereco: end, mensagem: msg || null })
+      });
+
+      if(res.ok || res.status === 201){
+        feedback.style.cssText = 'display:block; background:#e8f5e9; color:#2e7d32; padding:10px; border-radius:6px; font-size:14px; margin-bottom:12px;';
+        feedback.textContent = '✓ Cadastro recebido! Nossa equipe entra em contato em até 1 dia útil.';
+        e.target.reset();
+        setTimeout(() => {
+          document.getElementById('modalCadastro').classList.remove('active');
+          feedback.style.display = 'none';
+        }, 3000);
+      } else { throw new Error(res.status); }
+    } catch(err) {
+      feedback.style.cssText = 'display:block; background:#fff3e0; color:#e65100; padding:10px; border-radius:6px; font-size:14px; margin-bottom:12px;';
+      feedback.textContent = 'Não foi possível enviar. Redirecionando para WhatsApp...';
+      setTimeout(() => {
+        const texto = `Olá! Quero cadastrar um imóvel na Quadra e Lote.\nNome: ${nome}\nTelefone: ${tel}\nTipo: ${tipo}\nEndereço: ${end}${msg ? `\nMensagem: ${msg}` : ''}`;
+        window.open(`https://wa.me/553128881091?text=${encodeURIComponent(texto)}`, '_blank');
+        document.getElementById('modalCadastro').classList.remove('active');
+        feedback.style.display = 'none';
+      }, 2000);
+    } finally {
+      btn.disabled = false;
+      btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> enviar cadastro';
+    }
   }
 </script>
 

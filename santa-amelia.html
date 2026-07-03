@@ -685,10 +685,19 @@
       <div class="field"><label>nome completo</label><input type="text" id="f-nome" required></div>
       <div class="field"><label>e-mail</label><input type="email" id="f-email" required></div>
       <div class="field"><label>telefone / whatsapp</label><input type="tel" id="f-tel" required></div>
-      <div class="field"><label>data preferida</label><input type="date" id="f-data" required></div>
-      <div class="field"><label>horário</label><input type="time" id="f-hora" required></div>
+      <div class="field">
+        <label>data preferida</label>
+        <input type="date" id="f-data" required>
+      </div>
+      <div class="field">
+        <label>horário</label>
+        <select id="f-hora" required>
+          <option value="">selecione um horário</option>
+        </select>
+      </div>
       <div class="field"><label>mensagem (opcional)</label><textarea id="f-msg" placeholder="Tem alguma pergunta específica?"></textarea></div>
-      <button type="submit" class="btn btn-primary">confirmar agendamento</button>
+      <div id="agendar-feedback" style="display:none; padding:10px; border-radius:6px; font-size:14px; margin-bottom:12px;"></div>
+      <button type="submit" id="agendar-btn" class="btn btn-primary">confirmar agendamento</button>
     </form>
   </div>
 </div>
@@ -703,24 +712,97 @@
 </div>
 
 <script>
-function enviarAgendamento(e){
-  e.preventDefault();
-  const nome=document.getElementById('f-nome').value;
-  const email=document.getElementById('f-email').value;
-  const tel=document.getElementById('f-tel').value;
-  const data=document.getElementById('f-data').value;
-  const hora=document.getElementById('f-hora').value;
-  const msg=document.getElementById('f-msg').value;
-  const texto=`Olá! Gostaria de agendar uma visita.\nNome: ${nome}\nE-mail: ${email}\nTelefone: ${tel}\nData: ${data}\nHorário: ${hora}${msg?`\nMensagem: ${msg}`:''}`;
-  window.open(`https://wa.me/553128881091?text=${encodeURIComponent(texto)}`,'_blank');
-  document.getElementById('modalAgendar').classList.remove('active');
+const SUPA_URL = 'https://frhhvwuafgkzvxjvihwp.supabase.co';
+const SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZyaGh2d3VhZmdrenZ4anZpaHdwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODMwMjM1NDAsImV4cCI6MjA5ODU5OTU0MH0.rvkR9sBoNwP5lPAxiIL3KboPd7VWMMPCWT96JnGAgBk';
+
+(function(){
+  const input = document.getElementById('f-data');
+  const hoje = new Date();
+  const y = hoje.getFullYear();
+  const m = String(hoje.getMonth()+1).padStart(2,'0');
+  const d = String(hoje.getDate()).padStart(2,'0');
+  input.min = `${y}-${m}-${d}`;
+  input.addEventListener('change', popularHorarios);
+})();
+
+function popularHorarios(){
+  const sel = document.getElementById('f-hora');
+  const data = document.getElementById('f-data').value;
+  sel.innerHTML = '<option value="">selecione um horário</option>';
+  const hoje = new Date();
+  const y = hoje.getFullYear();
+  const m = String(hoje.getMonth()+1).padStart(2,'0');
+  const d = String(hoje.getDate()).padStart(2,'0');
+  const ehHoje = data === `${y}-${m}-${d}`;
+  const minHora = ehHoje ? hoje.getHours() + 2 : 0;
+  for(let h = 8; h <= 18; h++){
+    if(h < minHora) continue;
+    const label = `${String(h).padStart(2,'0')}:00`;
+    const opt = document.createElement('option');
+    opt.value = label; opt.textContent = label;
+    sel.appendChild(opt);
+  }
 }
+
 document.getElementById('modalAgendar').addEventListener('click',function(e){
   if(e.target===this) this.classList.remove('active');
 });
 document.getElementById('modalVideo').addEventListener('click',function(e){
   if(e.target===this) this.classList.remove('active');
 });
+
+async function enviarAgendamento(e){
+  e.preventDefault();
+  const btn = document.getElementById('agendar-btn');
+  const feedback = document.getElementById('agendar-feedback');
+  const nome  = document.getElementById('f-nome').value.trim();
+  const email = document.getElementById('f-email').value.trim();
+  const tel   = document.getElementById('f-tel').value.trim();
+  const data  = document.getElementById('f-data').value;
+  const hora  = document.getElementById('f-hora').value;
+  const msg   = document.getElementById('f-msg').value.trim();
+
+  if(!hora){ alert('Selecione um horário.'); return; }
+
+  btn.disabled = true;
+  btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> confirmando...';
+
+  try {
+    const res = await fetch(`${SUPA_URL}/rest/v1/agendamentos`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': SUPA_KEY,
+        'Authorization': `Bearer ${SUPA_KEY}`,
+        'Prefer': 'return=minimal'
+      },
+      body: JSON.stringify({ nome, email, telefone: tel, data_visita: data, horario: hora, imovel: 'santa-amelia', mensagem: msg || null })
+    });
+
+    if(res.ok || res.status === 201){
+      feedback.style.cssText = 'display:block; background:#e8f5e9; color:#2e7d32; padding:10px; border-radius:6px; font-size:14px; margin-bottom:12px;';
+      feedback.textContent = `✓ Visita confirmada para ${data.split('-').reverse().join('/')} às ${hora}. Entraremos em contato em breve!`;
+      e.target.reset();
+      setTimeout(() => {
+        document.getElementById('modalAgendar').classList.remove('active');
+        feedback.style.display = 'none';
+      }, 4000);
+    } else { throw new Error(res.status); }
+  } catch(err) {
+    feedback.style.cssText = 'display:block; background:#fff3e0; color:#e65100; padding:10px; border-radius:6px; font-size:14px; margin-bottom:12px;';
+    feedback.textContent = 'Não foi possível confirmar. Redirecionando para WhatsApp...';
+    setTimeout(() => {
+      const texto = `Olá! Gostaria de agendar uma visita à casa em Santa Amélia.\nNome: ${nome}\nE-mail: ${email}\nTelefone: ${tel}\nData: ${data}\nHorário: ${hora}${msg?`\nMensagem: ${msg}`:''}`;
+      window.open(`https://wa.me/553128881091?text=${encodeURIComponent(texto)}`,'_blank');
+      document.getElementById('modalAgendar').classList.remove('active');
+      feedback.style.display = 'none';
+    }, 2000);
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = 'confirmar agendamento';
+  }
+}
+
 function toggleAccordion(btn){
   const item = btn.parentElement;
   item.classList.toggle('open');
@@ -730,36 +812,23 @@ function initMapaImovel(){
   const localImovel = {lat:-19.845611, lng:-43.985056};
   const mapaEl = document.getElementById('map-real');
   if(!mapaEl) return;
-
   const map = new google.maps.Map(mapaEl, {
-    center: localImovel,
-    zoom: 16,
-    disableDefaultUI: true,
-    zoomControl: true,
-    streetViewControl: false,
-    fullscreenControl: true,
-    mapTypeControl: false,
-    clickableIcons: false,
+    center: localImovel, zoom: 16, disableDefaultUI: true,
+    zoomControl: true, streetViewControl: false, fullscreenControl: true,
+    mapTypeControl: false, clickableIcons: false,
     styles: [
       {featureType:'poi', elementType:'labels', stylers:[{visibility:'off'}]},
       {featureType:'transit', elementType:'labels', stylers:[{visibility:'off'}]}
     ]
   });
-
   new google.maps.Marker({
-    position: localImovel,
-    map: map,
+    position: localImovel, map: map,
     icon: {
       path: 'M12 0C7.31 0 3.5 3.81 3.5 8.5c0 6.5 8.5 15.5 8.5 15.5s8.5-9 8.5-15.5C20.5 3.81 16.69 0 12 0zm0 12a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7z',
-      fillColor: '#1a3a5f',
-      fillOpacity: 1,
-      strokeColor: '#FAFAF7',
-      strokeWeight: 1.5,
-      scale: 1.6,
-      anchor: new google.maps.Point(12, 24)
+      fillColor: '#1a3a5f', fillOpacity: 1, strokeColor: '#FAFAF7',
+      strokeWeight: 1.5, scale: 1.6, anchor: new google.maps.Point(12, 24)
     }
   });
-
   google.maps.event.trigger(map, 'resize');
   map.setCenter(localImovel);
 }
