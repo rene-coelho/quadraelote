@@ -325,7 +325,8 @@
   }
   .field input:focus, .field textarea:focus{outline:none; border-color:var(--petrol);}
   .field textarea{resize:vertical; min-height:80px;}
-  .chips-dias, .chips-horas { display:flex; flex-wrap:wrap; gap:8px; margin-top:6px; }
+  .chips-dias { display:flex; flex-wrap:wrap; gap:8px; margin-top:6px; }
+  .chips-horas { display:grid; grid-template-columns: repeat(5, 1fr); gap:8px; margin-top:6px; }
   .chip { padding:8px 14px; border:1px solid var(--line); border-radius:20px; font-size:13px; cursor:pointer; background:var(--offwhite); color:var(--obsidian); transition:background .15s, color .15s; user-select:none; }
   .chip:hover:not(.chip-disabled) { border-color:var(--petrol); }
   .chip.chip-selected { background:var(--petrol); color:#fff; border-color:var(--petrol); }
@@ -713,44 +714,15 @@ const SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsI
 const DIAS_SEMANA = ['dom','seg','ter','qua','qui','sex','sáb'];
 const MESES = ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
 
-function gerarChipsDias() {
-  const container = document.getElementById('chips-dias');
-  container.innerHTML = '';
-  const hoje = new Date();
-  hoje.setHours(0,0,0,0);
-  for (let i = 0; i < 14; i++) {
-    const d = new Date(hoje);
-    d.setDate(hoje.getDate() + i);
-    const diaSemana = d.getDay(); // 0=dom
-    const disabled = diaSemana === 0; // domingo bloqueado
-    const chip = document.createElement('div');
-    chip.className = 'chip chip-dia' + (disabled ? ' chip-disabled' : '');
-    chip.innerHTML = `<div class="chip-weekday">${DIAS_SEMANA[diaSemana]}</div><div class="chip-day">${String(d.getDate()).padStart(2,'0')}</div>`;
-    const iso = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
-    if (!disabled) {
-      chip.addEventListener('click', () => {
-        document.querySelectorAll('#chips-dias .chip').forEach(c => c.classList.remove('chip-selected'));
-        chip.classList.add('chip-selected');
-        document.getElementById('f-data').value = iso;
-        gerarChipsHoras(iso, diaSemana);
-      });
-    }
-    container.appendChild(chip);
-  }
-}
-
-// --- chips de horário ---
-function gerarChipsHoras(iso, diaSemana) {
-  const container = document.getElementById('chips-horas');
-  container.innerHTML = '';
-  document.getElementById('f-hora').value = '';
+function slotsDisponiveis(iso, diaSemana) {
   const ehSabado = diaSemana === 6;
-  const fimHora = ehSabado ? 13 : 18;
-  const fimMin  = ehSabado ? 45 : 30;
+  const fimHora = ehSabado ? 14 : 18;
+  const fimMin  = ehSabado ? 0 : 30;
   const agora = new Date();
   const hoje = new Date(); hoje.setHours(0,0,0,0);
   const dataChip = new Date(iso + 'T00:00:00');
   const ehHoje = dataChip.getTime() === hoje.getTime();
+  const slots = [];
   for (let h = 8; h <= fimHora; h++) {
     const mins = (h === fimHora) ? [0, ...(fimMin >= 15 ? [15] : []), ...(fimMin >= 30 ? [30] : []), ...(fimMin >= 45 ? [45] : [])] : [0,15,30,45];
     for (const m of mins) {
@@ -760,26 +732,80 @@ function gerarChipsHoras(iso, diaSemana) {
         const limite = new Date(agora.getTime() + 2 * 60 * 60 * 1000);
         if (slotTime < limite) continue;
       }
-      const label = `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}`;
-      const chip = document.createElement('div');
-      chip.className = 'chip';
-      chip.textContent = label;
-      chip.addEventListener('click', () => {
-        document.querySelectorAll('#chips-horas .chip').forEach(c => c.classList.remove('chip-selected'));
-        chip.classList.add('chip-selected');
-        document.getElementById('f-hora').value = label;
-      });
-      container.appendChild(chip);
+      slots.push(`${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}`);
     }
   }
-  if (!container.children.length) {
-    container.innerHTML = '<span style="font-size:13px;color:var(--text-soft)">nenhum horário disponível para hoje — escolha outro dia</span>';
+  return slots;
+}
+
+function contarHorasDisponiveis(iso, diaSemana) {
+  return slotsDisponiveis(iso, diaSemana).length;
+}
+
+function gerarChipsDias() {
+  const container = document.getElementById('chips-dias');
+  container.innerHTML = '';
+  const hoje = new Date();
+  hoje.setHours(0,0,0,0);
+  let primeiro = null;
+  for (let i = 0; i < 14; i++) {
+    const d = new Date(hoje);
+    d.setDate(hoje.getDate() + i);
+    const diaSemana = d.getDay(); // 0=dom
+    const disabled = diaSemana === 0; // domingo bloqueado
+    const iso = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+    if (!disabled && contarHorasDisponiveis(iso, diaSemana) === 0) continue;
+    const chip = document.createElement('div');
+    chip.className = 'chip chip-dia' + (disabled ? ' chip-disabled' : '');
+    chip.innerHTML = `<div class="chip-weekday">${DIAS_SEMANA[diaSemana]}</div><div class="chip-day">${String(d.getDate()).padStart(2,'0')}</div>`;
+    if (!disabled) {
+      chip.addEventListener('click', () => {
+        document.querySelectorAll('#chips-dias .chip').forEach(c => c.classList.remove('chip-selected'));
+        chip.classList.add('chip-selected');
+        document.getElementById('f-data').value = iso;
+        gerarChipsHoras(iso, diaSemana);
+      });
+      if (!primeiro) primeiro = { chip, iso, diaSemana };
+    }
+    container.appendChild(chip);
+  }
+  if (primeiro) {
+    primeiro.chip.classList.add('chip-selected');
+    document.getElementById('f-data').value = primeiro.iso;
+    gerarChipsHoras(primeiro.iso, primeiro.diaSemana);
   }
 }
 
-// inicializar chips ao abrir o modal
-document.querySelector('[onclick*="modalAgendar"]') && (() => {
-  const btns = document.querySelectorAll('[onclick*="modalAgendar"]');
+// --- chips de horário ---
+function gerarChipsHoras(iso, diaSemana) {
+  const container = document.getElementById('chips-horas');
+  container.innerHTML = '';
+  document.getElementById('f-hora').value = '';
+  const labels = slotsDisponiveis(iso, diaSemana);
+  let primeiroChip = null;
+  labels.forEach(label => {
+    const chip = document.createElement('div');
+    chip.className = 'chip';
+    chip.textContent = label;
+    chip.addEventListener('click', () => {
+      document.querySelectorAll('#chips-horas .chip').forEach(c => c.classList.remove('chip-selected'));
+      chip.classList.add('chip-selected');
+      document.getElementById('f-hora').value = label;
+    });
+    container.appendChild(chip);
+    if (!primeiroChip) primeiroChip = { chip, label };
+  });
+  if (!container.children.length) {
+    container.innerHTML = '<span style="font-size:13px;color:var(--text-soft)">nenhum horário disponível para hoje — escolha outro dia</span>';
+  } else {
+    primeiroChip.chip.classList.add('chip-selected');
+    document.getElementById('f-hora').value = primeiroChip.label;
+  }
+}
+
+// inicializar chips ao abrir o modal (exclui o botão de fechar)
+document.querySelector('[onclick*="modalAgendar"].btn') && (() => {
+  const btns = document.querySelectorAll('[onclick*="modalAgendar"].btn');
   btns.forEach(btn => {
     const original = btn.getAttribute('onclick');
     btn.setAttribute('onclick', original + '; gerarChipsDias()');
