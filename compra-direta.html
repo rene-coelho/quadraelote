@@ -39,9 +39,9 @@
   .nav-dropdown-trigger{font-size:14px;font-weight:500;color:var(--obsidian);cursor:pointer;display:flex;align-items:center;gap:5px;transition:color .15s;background:none;border:none;font-family:'Inter',sans-serif;padding:0;}
   .nav-dropdown-trigger:hover{color:var(--petrol);}
   .nav-dropdown-trigger i{font-size:10px;transition:transform .15s;}
-  .nav-dropdown:hover .nav-dropdown-trigger i{transform:rotate(180deg);}
+  .nav-dropdown.open .nav-dropdown-trigger i{transform:rotate(180deg);}
   .nav-dropdown-menu{display:none;position:absolute;top:calc(100% + 14px);left:-16px;background:#fff;border:1px solid var(--line);border-radius:var(--radius-md);padding:6px;min-width:200px;box-shadow:0 4px 16px rgba(21,33,31,0.08);}
-  .nav-dropdown:hover .nav-dropdown-menu{display:block;}
+  .nav-dropdown.open .nav-dropdown-menu{display:block;}
   .nav-dropdown-menu a{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:var(--radius-sm);font-size:13.5px;font-weight:500;text-decoration:none;color:var(--obsidian);transition:background .12s;white-space:nowrap;}
   .nav-dropdown-menu a:hover{background:var(--offwhite);color:var(--petrol);}
   .nav-dropdown-menu a i{color:var(--petrol);font-size:13px;width:16px;text-align:center;}
@@ -435,6 +435,20 @@
     <div class="footer-bottom">© 2025 Quadra e Lote Negócios Imobiliários. Todos os direitos reservados.</div>
   </div>
 </footer>
+
+<script>
+  document.querySelectorAll('.nav-dropdown').forEach(function(dd){
+    dd.querySelector('.nav-dropdown-trigger').addEventListener('click', function(e){
+      e.stopPropagation();
+      dd.classList.toggle('open');
+    });
+  });
+  document.addEventListener('mousedown', function(e){
+    document.querySelectorAll('.nav-dropdown.open').forEach(function(dd){
+      if(!dd.contains(e.target)) dd.classList.remove('open');
+    });
+  });
+</script>
 
 </body>
 </html>

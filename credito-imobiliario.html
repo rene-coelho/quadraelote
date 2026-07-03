@@ -46,14 +46,14 @@
   }
   .nav-dropdown-trigger:hover{color:var(--petrol);}
   .nav-dropdown-trigger i{font-size:10px;transition:transform .15s;}
-  .nav-dropdown:hover .nav-dropdown-trigger i{transform:rotate(180deg);}
+  .nav-dropdown.open .nav-dropdown-trigger i{transform:rotate(180deg);}
   .nav-dropdown-menu{
     display:none;position:absolute;top:calc(100% + 14px);left:-16px;
     background:#fff;border:1px solid var(--line);border-radius:var(--radius-md);
     padding:6px;min-width:200px;
     box-shadow:0 4px 16px rgba(21,33,31,0.08);
   }
-  .nav-dropdown:hover .nav-dropdown-menu{display:block;}
+  .nav-dropdown.open .nav-dropdown-menu{display:block;}
   .nav-dropdown-menu a{
     display:flex;align-items:center;gap:10px;
     padding:10px 12px;border-radius:var(--radius-sm);
@@ -501,6 +501,19 @@ function simular(){
 
 /* init */
 updatePct();
+
+/* ── DROPDOWN SOLUÇÕES ── */
+document.querySelectorAll('.nav-dropdown').forEach(function(dd){
+  dd.querySelector('.nav-dropdown-trigger').addEventListener('click', function(e){
+    e.stopPropagation();
+    dd.classList.toggle('open');
+  });
+});
+document.addEventListener('mousedown', function(e){
+  document.querySelectorAll('.nav-dropdown.open').forEach(function(dd){
+    if(!dd.contains(e.target)) dd.classList.remove('open');
+  });
+});
 </script>
 </body>
 </html>
