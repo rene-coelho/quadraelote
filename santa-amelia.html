@@ -372,13 +372,17 @@
     <div class="hero-grid">
       <div class="gallery">
         <div class="cell main">
-          foto principal
+          <img src="/assets/img/santa-amelia/QeL_Fachada_1.webp" alt="fachada" style="width:100%;height:100%;object-fit:cover;">
           <button class="video-btn" onclick="document.getElementById('modalVideo').classList.add('active')">
             <i class="fa-solid fa-play"></i> vídeo
           </button>
         </div>
-        <div class="cell">foto 2</div>
-        <div class="cell has-more" onclick="document.getElementById('galeria-completa').scrollIntoView({behavior:'smooth'})" style="cursor:pointer;">foto 3</div>
+        <div class="cell">
+          <img src="/assets/img/santa-amelia/QeL_Sala_1.webp" alt="sala" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        <div class="cell has-more" onclick="document.getElementById('galeria-completa').scrollIntoView({behavior:'smooth'})" style="cursor:pointer;">
+          <img src="/assets/img/santa-amelia/QeL_Cozinha_1.webp" alt="cozinha" style="width:100%;height:100%;object-fit:cover;">
+        </div>
       </div>
 
       <aside class="sidebar">
@@ -621,14 +625,26 @@
   <section id="galeria-completa">
     <h2 class="section-title">galeria completa</h2>
     <div class="full-gallery">
-      <div class="cell">foto 1</div>
-      <div class="cell">foto 2</div>
-      <div class="cell">foto 3</div>
-      <div class="cell">foto 4</div>
-      <div class="cell">foto 5</div>
-      <div class="cell">foto 6</div>
-      <div class="cell">foto 7</div>
-      <div class="cell">foto 8</div>
+      <div class="cell"><img src="/assets/img/santa-amelia/QeL_Fachada_1.webp" alt="fachada" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="cell"><img src="/assets/img/santa-amelia/QeL_Sala_1.webp" alt="sala" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="cell"><img src="/assets/img/santa-amelia/QeL_Sala_2.webp" alt="sala" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="cell"><img src="/assets/img/santa-amelia/QeL_Cozinha_1.webp" alt="cozinha" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="cell"><img src="/assets/img/santa-amelia/QeL_Cozinha_2.webp" alt="cozinha" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="cell"><img src="/assets/img/santa-amelia/QeL_Cozinha_3.webp" alt="cozinha" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="cell"><img src="/assets/img/santa-amelia/QeL_Qt.1_1.webp" alt="quarto" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="cell"><img src="/assets/img/santa-amelia/QeL_Qt.1_2.webp" alt="quarto" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="cell"><img src="/assets/img/santa-amelia/QeL_Qt.2_1.webp" alt="quarto" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="cell"><img src="/assets/img/santa-amelia/QeL_Qt.2_2.webp" alt="quarto" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="cell"><img src="/assets/img/santa-amelia/QeL_Qt.2_3.webp" alt="quarto" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="cell"><img src="/assets/img/santa-amelia/QeL_Qt.3_1.webp" alt="quarto" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="cell"><img src="/assets/img/santa-amelia/QeL_Qt.3_2.webp" alt="quarto" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="cell"><img src="/assets/img/santa-amelia/QeL_Qt.4_1.webp" alt="quarto" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="cell"><img src="/assets/img/santa-amelia/QeL_Qt.4_2.webp" alt="quarto" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="cell"><img src="/assets/img/santa-amelia/QeL_Qt._1.webp" alt="quarto" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="cell"><img src="/assets/img/santa-amelia/QeL_Qt._2.webp" alt="quarto" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="cell"><img src="/assets/img/santa-amelia/QeL_Varanda_1.webp" alt="varanda" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="cell"><img src="/assets/img/santa-amelia/QeL_Varanda_2.webp" alt="varanda" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="cell"><img src="/assets/img/santa-amelia/QeL_Varanda_3.webp" alt="varanda" style="width:100%;height:100%;object-fit:cover;"></div>
     </div>
   </section>
 
@@ -700,8 +716,8 @@
 <div class="modal-bg" id="modalVideo">
   <div class="modal-box" style="max-width:720px; padding:16px;">
     <button class="modal-close" onclick="document.getElementById('modalVideo').classList.remove('active')">✕</button>
-    <div style="aspect-ratio:16/9; background:#000; border-radius:var(--radius-sm); display:flex; align-items:center; justify-content:center; color:#888; font-size:14px;">
-      vídeo do imóvel será inserido aqui
+    <div style="aspect-ratio:16/9; background:#000; border-radius:var(--radius-sm); overflow:hidden;">
+      <iframe width="100%" height="100%" src="https://www.youtube.com/embed/WHlzcB00nu4" title="Santa Amélia" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
   </div>
 </div>
