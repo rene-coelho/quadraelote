@@ -26,11 +26,7 @@
   header{background:var(--offwhite);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:200;}
   .header-inner{max-width:var(--maxw);margin:0 auto;padding:18px 24px;display:flex;align-items:center;justify-content:space-between;}
   .brand{display:flex;align-items:center;gap:10px;text-decoration:none;}
-  .brand-icon{width:30px;height:30px;border:2px solid var(--obsidian);border-radius:var(--radius-sm);position:relative;overflow:hidden;flex-shrink:0;}
-  .brand-icon::before{content:'';position:absolute;left:0;bottom:0;width:50%;height:50%;background:var(--petrol);}
-  .brand-icon::after{content:'';position:absolute;left:0;top:50%;width:100%;height:1px;background:var(--obsidian);}
-  .brand-icon-vline{position:absolute;top:0;left:50%;width:1px;height:100%;background:var(--obsidian);}
-  .brand-name{font-size:17px;font-weight:600;letter-spacing:-0.2px;}
+  .brand-logo{height:32px;width:auto;display:block;}
   .header-nav{display:flex;align-items:center;gap:28px;}
   .header-links{display:flex;align-items:center;gap:24px;}
   .header-links a{font-size:14px;font-weight:500;text-decoration:none;color:var(--obsidian);transition:color .15s;}
@@ -252,8 +248,7 @@
 <header>
   <div class="header-inner">
     <a href="/" class="brand">
-      <div class="brand-icon"><div class="brand-icon-vline"></div></div>
-      <span class="brand-name">quadra e lote</span>
+      <img src="/assets/Logo_QeL.png" alt="quadra e lote" class="brand-logo">
     </a>
     <div class="header-nav">
       <nav class="header-links">
