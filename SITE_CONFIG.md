@@ -40,7 +40,7 @@ Fonte: **Inter** (Google Fonts) — corpo e títulos, sempre caixa baixa.
 ## Mapa de páginas
 
 ### `index.html` — Home institucional
-**Status:** pronto, aguardando deploy  
+**Status:** no ar  
 **URL:** `quadraelote.com.br`  
 **Header:** completo (logo + nav + CTA)  
 **Footer:** completo (3 colunas com âncoras internas)
@@ -194,8 +194,8 @@ Copyright + link "voltar ao início" → `/`
 | Item | Prioridade | Contexto |
 |------|-----------|---------|
 | Finalizar push GitHub + deploy Vercel | Alta | Git configurado, commit e push pendentes |
-| Atualizar home: 3 cards em #solucoes + novo título | Alta | Seção ainda tem 2 cards e título "dois caminhos" |
-| Atualizar menu home: remover "como funciona" e "proprietários" do nav | Alta | Definido na conversa de estrutura, não aplicado |
+| Atualizar home: 3 cards em #solucoes + novo título | Resolvido | Seção já tem 3 cards e título "três caminhos para o seu imóvel" |
+| Atualizar menu home: remover "como funciona" e "proprietários" do nav | Resolvido | Nav já contém apenas "sobre" e "soluções" |
 | Logos dos bancos em `/credito-imobiliario` | Média | Campo `logo` vazio no array BANKS |
 | Taxas dos bancos — revisão periódica | Média | Movem com a Selic |
 | CTA WhatsApp pós-simulação em `/credito-imobiliario` | Média | Intencionalmente deixado para configurar depois |
