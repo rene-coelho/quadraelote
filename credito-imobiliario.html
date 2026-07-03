@@ -469,9 +469,12 @@ function simular(){
     const card = document.createElement('div');
     card.className = 'bank-card';
     card.innerHTML = `
-      <div class="bank-name-col">${logoHtml}</div>
+      <div class="bank-name-col" style="display:flex;align-items:center;gap:10px;">
+        ${logoHtml}
+        <span style="font-size:14px;font-weight:600;color:var(--obsidian);">${b.name}</span>
+      </div>
       <div class="bank-stat">
-        <div class="bank-stat-label">taxa efetiva</div>
+        <div class="bank-stat-label">taxa efetiva <i class="fa-solid fa-circle-info" style="font-size:10px;color:var(--text-soft);cursor:help;" title="As taxas são indicativas e fornecidas pelos bancos. Podem variar conforme o perfil do comprador — nossos especialistas buscam as melhores condições para você."></i></div>
         <div class="bank-stat-val highlight">${(b.rate*100).toFixed(2).replace('.',',')}% a.a.</div>
       </div>
       <div class="bank-stat">
@@ -483,7 +486,7 @@ function simular(){
         <div class="bank-stat-val">${fmtBRL(r.last)}</div>
       </div>
       <div class="bank-stat">
-        <div class="bank-stat-label">tabela</div>
+        <div class="bank-stat-label">tabela <i class="fa-solid fa-circle-info" style="font-size:10px;color:var(--text-soft);cursor:help;" title="SAC — Sistema de Amortização Constante: parcelas decrescentes, com amortização fixa e juros reduzindo a cada mês. Geralmente resulta em menor custo total comparado à Tabela Price."></i></div>
         <div class="bank-stat-badge">${b.table}</div>
       </div>`;
     container.appendChild(card);
