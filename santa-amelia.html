@@ -163,6 +163,8 @@
 
   .about-text p{font-size:15.5px; color:#363633; margin-bottom:14px; max-width:680px;}
   .about-text p:last-child{margin-bottom:0;}
+  .about-more-btn{background:none; border:none; color:var(--petrol); font-size:14px; font-weight:600; cursor:pointer; padding:8px 0 0; text-decoration:underline;}
+  .about-more-btn:hover{color:var(--obsidian);}
 
   .floor-block{margin-bottom:28px;}
   .floor-block:last-child{margin-bottom:0;}
@@ -267,6 +269,12 @@
   .why-card i{font-size:20px; color:var(--skyblue); margin-bottom:12px; display:block;}
   .why-card h3{font-size:15px; font-weight:600; color:#fff; margin-bottom:8px;}
   .why-card p{font-size:13.5px; color:rgba(255,255,255,0.75); line-height:1.55;}
+
+  .para-voce-list{list-style:none; padding:0; margin:0 0 32px; display:flex; flex-direction:column; gap:12px;}
+  .para-voce-list li{padding-left:20px; position:relative; font-size:15px; line-height:1.6; color:var(--obsidian);}
+  .para-voce-list li::before{content:'—'; position:absolute; left:0; color:var(--petrol);}
+  .para-voce-cta{border-top:1px solid var(--line); padding-top:28px; display:flex; flex-direction:column; gap:16px; max-width:560px;}
+  .para-voce-cta p{font-size:14px; color:var(--text-soft); font-style:italic; line-height:1.6; margin:0;}
 
   .full-gallery{
     display:grid; grid-template-columns:repeat(4,1fr); gap:10px;
@@ -375,7 +383,7 @@
 
   <section class="hero" style="border-bottom:none; padding-bottom:32px;">
     <div class="eyebrow">casa à venda · santa amélia</div>
-    <h1 class="hero-title">seu novo endereço em santa amélia</h1>
+    <h1 class="hero-title">Seu novo endereço no Santa Amélia</h1>
     <div class="hero-location"><i class="fa-solid fa-location-dot"></i> Rua Barão de Camargo — Jardim Atlântico, Belo Horizonte</div>
 
     <div class="hero-grid">
@@ -446,10 +454,17 @@
   <section>
     <div class="two-col">
       <div>
-        <h2 class="section-title">sobre essa propriedade</h2>
+        <h2 class="section-title">sobre esta propriedade</h2>
         <div class="about-text">
-          <p>Casa de esquina em um dos endereços mais consolidados de Belo Horizonte. Com 336m² de área construída em terreno de 360m², a propriedade combina espaço, luz natural e estrutura para uma família que busca qualidade de vida sem abrir mão de localização.</p>
-          <p>Distribuída em dois pavimentos, oferece quatro quartos — sendo uma suíte —, amplo espaço externo com churrasqueira e quintal com jabuticabeira. Documentação completa, com Habite-se e aceite a financiamento.</p>
+          <p>Em uma esquina privilegiada de um dos bairros mais consolidados de Belo Horizonte, esta residência foi planejada para proporcionar conforto, funcionalidade e qualidade de vida para toda a família.</p>
+          <p>São 336 m² de área construída em um terreno de 360 m², distribuídos em dois pavimentos bem resolvidos, com ambientes amplos, excelente iluminação natural e uma planta que favorece tanto a convivência quanto a privacidade.</p>
+          <div class="about-more" id="about-more" style="display:none;">
+            <p>A área íntima conta com quatro quartos, sendo uma suíte, oferecendo conforto para a família e flexibilidade para receber visitas ou montar um escritório em casa.</p>
+            <p>Na área externa, o espaço convida a criar memórias: churrasqueira para reunir amigos e familiares, quintal agradável e uma charmosa jabuticabeira que torna o ambiente ainda mais acolhedor.</p>
+            <p>Outro diferencial importante é a documentação totalmente regularizada, com Habite-se, permitindo financiamento e proporcionando mais segurança e tranquilidade durante todo o processo de compra.</p>
+            <p>Uma casa sólida, espaçosa e pronta para receber uma nova história.</p>
+          </div>
+          <button class="about-more-btn" id="about-more-btn" onclick="(function(){var m=document.getElementById('about-more');var b=document.getElementById('about-more-btn');if(m.style.display==='none'){m.style.display='block';b.textContent='ver menos';}else{m.style.display='none';b.textContent='ver mais';}})()" >ver mais</button>
         </div>
       </div>
       <div></div>
@@ -468,7 +483,7 @@
         <div class="floor-item"><i class="fa-solid fa-kitchen-set"></i> cozinha com ilha e despensa</div>
         <div class="floor-item"><i class="fa-solid fa-shirt"></i> área de serviço externa</div>
         <div class="floor-item"><i class="fa-solid fa-fire-burner"></i> espaço externo com churrasqueira</div>
-        <div class="floor-item"><i class="fa-solid fa-box"></i> quarto de despejo</div>
+        <div class="floor-item"><i class="fa-solid fa-box"></i> despensa</div>
         <div class="floor-item"><i class="fa-solid fa-tree"></i> quintal com jabuticabeira</div>
       </div>
     </div>
@@ -621,9 +636,9 @@
         <p>Custos, taxas e condições explícitos desde o primeiro contato. Sem letras miúdas.</p>
       </div>
       <div class="why-card">
-        <i class="fa-solid fa-map-location-dot"></i>
-        <h3>identidade oficial</h3>
-        <p>Como um CPF para imóveis: quadra e lote identificam univocamente cada propriedade.</p>
+        <i class="fa-solid fa-handshake"></i>
+        <h3>acompanhamento completo</h3>
+        <p>Ao seu lado em cada etapa da compra, do primeiro contato ao registro do imóvel.</p>
       </div>
     </div>
   </div>
@@ -654,6 +669,22 @@
       <div class="cell"><img src="/assets/img/santa-amelia/QeL_Varanda_1.webp" alt="varanda" style="width:100%;height:100%;object-fit:cover;cursor:pointer;" onclick="abrirLightbox(17)"></div>
       <div class="cell"><img src="/assets/img/santa-amelia/QeL_Varanda_2.webp" alt="varanda" style="width:100%;height:100%;object-fit:cover;cursor:pointer;" onclick="abrirLightbox(18)"></div>
       <div class="cell"><img src="/assets/img/santa-amelia/QeL_Varanda_3.webp" alt="varanda" style="width:100%;height:100%;object-fit:cover;cursor:pointer;" onclick="abrirLightbox(19)"></div>
+    </div>
+  </section>
+
+  <section id="para-voce">
+    <h2 class="section-title">este imóvel é para você se…</h2>
+    <ul class="para-voce-list">
+      <li>Você acredita que uma casa deve facilitar a vida, não complicá-la.</li>
+      <li>Você procura um endereço que faça sentido para a sua rotina de hoje e para os próximos anos.</li>
+      <li>Você procura privacidade sem abrir mão da conveniência.</li>
+      <li>Você gosta de receber bem, mas não quer que a manutenção da casa se torne um compromisso.</li>
+      <li>Você valoriza ambientes amplos, privacidade e a sensação de estar em casa desde o primeiro dia.</li>
+      <li>Você entende que o verdadeiro luxo está no conforto, na funcionalidade e nos detalhes.</li>
+    </ul>
+    <div class="para-voce-cta">
+      <p>Esse ainda não é o imóvel ideal? Descreva, em poucas palavras, o que é indispensável para você. Nem sempre o imóvel perfeito está anunciado — se surgir uma oportunidade dentro do seu perfil, você será o primeiro a saber.</p>
+      <button class="btn btn-outline" onclick="document.getElementById('modalPerfil').classList.add('active')"><i class="fa-solid fa-sliders"></i> descrever meu perfil</button>
     </div>
   </section>
 
@@ -718,6 +749,20 @@
       <div class="field"><label>mensagem (opcional)</label><textarea id="f-msg" placeholder="Tem alguma pergunta específica?"></textarea></div>
       <div id="agendar-feedback" style="display:none; padding:10px; border-radius:6px; font-size:14px; margin-bottom:12px;"></div>
       <button type="submit" id="agendar-btn" class="btn btn-primary">confirmar agendamento</button>
+    </form>
+  </div>
+</div>
+
+<div class="modal-bg" id="modalPerfil">
+  <div class="modal-box">
+    <button class="modal-close" onclick="document.getElementById('modalPerfil').classList.remove('active')">✕</button>
+    <div class="modal-title">descreva o imóvel ideal</div>
+    <form onsubmit="enviarPerfil(event)">
+      <div class="field"><label>nome completo</label><input type="text" id="p-nome" required></div>
+      <div class="field"><label>whatsapp</label><input type="tel" id="p-tel" required></div>
+      <div class="field"><label>o que é indispensável para você?</label><textarea id="p-msg" placeholder="Ex: 3 quartos, garagem coberta, bairro X..." required></textarea></div>
+      <div id="perfil-feedback" style="display:none;padding:10px;border-radius:6px;font-size:14px;margin-bottom:12px;"></div>
+      <button type="submit" id="perfil-btn" class="btn btn-primary">enviar</button>
     </form>
   </div>
 </div>
@@ -986,6 +1031,40 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'ArrowRight') { lbIdx = (lbIdx + 1) % LB_FOTOS.length; atualizarLightbox(); }
   if (e.key === 'Escape') fecharLightbox();
 });
+
+// fechar modalPerfil ao clicar fora
+document.getElementById('modalPerfil').addEventListener('click', function(e){
+  if(e.target===this) this.classList.remove('active');
+});
+async function enviarPerfil(e){
+  e.preventDefault();
+  const btn = document.getElementById('perfil-btn');
+  const fb = document.getElementById('perfil-feedback');
+  const nome = document.getElementById('p-nome').value.trim();
+  const tel = document.getElementById('p-tel').value.trim();
+  const msg = document.getElementById('p-msg').value.trim();
+  btn.disabled = true; btn.textContent = 'enviando…';
+  try {
+    const res = await fetch(`${SUPA_URL}/rest/v1/leads_proprietarios`, {
+      method:'POST',
+      headers:{'Content-Type':'application/json','apikey':SUPA_KEY,'Authorization':'Bearer '+SUPA_KEY,'Prefer':'return=minimal'},
+      body: JSON.stringify({ nome, telefone: tel, mensagem: msg, origem: 'perfil-santa-amelia' })
+    });
+    if(res.ok){
+      fb.style.display='block'; fb.style.background='#e8f5e9'; fb.style.color='#2e7d32';
+      fb.textContent='Mensagem enviada! Entraremos em contato assim que surgir uma oportunidade.';
+      document.getElementById('p-nome').value='';
+      document.getElementById('p-tel').value='';
+      document.getElementById('p-msg').value='';
+    } else { throw new Error(); }
+  } catch {
+    const texto = `Olá! Gostaria de descrever o imóvel que procuro.\nNome: ${nome}\nWhatsApp: ${tel}\nPerfil: ${msg}`;
+    window.open(`https://wa.me/553128881091?text=${encodeURIComponent(texto)}`,'_blank');
+    document.getElementById('modalPerfil').classList.remove('active');
+  } finally {
+    btn.disabled=false; btn.textContent='enviar';
+  }
+}
 </script>
 
 </body>
