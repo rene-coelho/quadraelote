@@ -211,15 +211,14 @@
 
   /* valores e taxas */
   .taxes-note{font-size:13.5px; color:var(--text-soft); max-width:600px; margin-bottom:24px;}
-  .tax-row{
-    display:flex; justify-content:space-between; align-items:flex-start; gap:24px;
-    padding:20px 0; border-bottom:1px solid var(--line);
-  }
-  .tax-row:last-child{border-bottom:none;}
-  .tax-label{display:flex; align-items:center; gap:10px; font-size:15px; font-weight:600; min-width:140px;}
-  .tax-label i{color:var(--petrol); font-size:15px;}
-  .tax-desc{font-size:13.5px; color:var(--text-soft); line-height:1.55; flex:1;}
-  .tax-value{font-size:16px; font-weight:700; color:var(--obsidian); white-space:nowrap;}
+  .tax-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px;}
+  .tax-card{border:1px solid var(--line); border-radius:var(--radius-md); padding:24px; display:flex; flex-direction:column; gap:12px;}
+  .tax-card-icon{width:40px; height:40px; border-radius:50%; background:var(--offwhite); border:1px solid var(--line); display:flex; align-items:center; justify-content:center;}
+  .tax-card-icon i{color:var(--obsidian); font-size:16px;}
+  .tax-card-title{font-size:15px; font-weight:600; color:var(--obsidian);}
+  .tax-card-value{font-size:15px; font-weight:700; color:var(--petrol);}
+  .tax-card-desc{font-size:13px; color:var(--text-soft); line-height:1.6;}
+  @media(max-width:600px){.tax-grid{grid-template-columns:1fr;}}
 
   /* acordeao bairro - nivel 1 */
   .accordion-l1{border-top:1px solid var(--line); border-bottom:1px solid var(--line); margin-top:8px;}
@@ -514,20 +513,25 @@
       <div class="accordion-l1-body">
         <p class="taxes-note">Os valores são aproximados e variam de acordo com a sua condição de pagamento e se é a sua primeira compra.</p>
 
-        <div class="tax-row">
-          <div class="tax-label"><i class="fa-solid fa-file-invoice-dollar"></i> ITBI</div>
-          <div class="tax-desc">O Imposto de Transmissão de Bens Imóveis é um imposto municipal pago pelo comprador na compra do imóvel.</div>
-          <div class="tax-value">R$ 42.000</div>
-        </div>
-        <div class="tax-row">
-          <div class="tax-label"><i class="fa-solid fa-stamp"></i> Registro</div>
-          <div class="tax-desc">Atualiza a matrícula do imóvel em seu nome. Após esse processo, o imóvel é seu.</div>
-          <div class="tax-value">R$ 12.800</div>
-        </div>
-        <div class="tax-row">
-          <div class="tax-label"><i class="fa-solid fa-magnifying-glass"></i> Vistoria</div>
-          <div class="tax-desc">Os bancos avaliam o imóvel para financiamento ou uso do FGTS verificando condições e valor. O custo varia por banco.</div>
-          <div class="tax-value">Até R$ 15.000</div>
+        <div class="tax-grid">
+          <div class="tax-card">
+            <div class="tax-card-icon"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+            <div class="tax-card-title">ITBI</div>
+            <div class="tax-card-value">R$ 42.000</div>
+            <div class="tax-card-desc">Imposto municipal devido pelo comprador para a transferência da propriedade.</div>
+          </div>
+          <div class="tax-card">
+            <div class="tax-card-icon"><i class="fa-solid fa-stamp"></i></div>
+            <div class="tax-card-title">Registro do imóvel</div>
+            <div class="tax-card-value">a partir de R$ 4.000</div>
+            <div class="tax-card-desc">Custos cartorários para registro da escritura ou do contrato de financiamento, oficializando a propriedade em seu nome. Pode variar conforme a forma de aquisição e os atos registrais necessários.</div>
+          </div>
+          <div class="tax-card">
+            <div class="tax-card-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+            <div class="tax-card-title">Vistoria bancária</div>
+            <div class="tax-card-value">a partir de R$ 1.500</div>
+            <div class="tax-card-desc">Taxa cobrada pela instituição financeira para avaliação do imóvel. Aplicável quando houver financiamento. Pode superar R$ 5.000 em algumas operações.</div>
+          </div>
         </div>
       </div>
     </div>
