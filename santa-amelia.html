@@ -920,6 +920,13 @@ async function enviarAgendamento(e){
     if(res.ok || res.status === 201){
       feedback.style.cssText = 'display:block; background:#e8f5e9; color:#2e7d32; padding:10px; border-radius:6px; font-size:14px; margin-bottom:12px;';
       feedback.textContent = `✓ Visita confirmada para ${data.split('-').reverse().join('/')} às ${hora}. Entraremos em contato em breve!`;
+
+      fetch('/api/notificar', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ nome, tel, email, data, hora, msg })
+      }).catch(() => {});
+
       e.target.reset();
       setTimeout(() => {
         document.getElementById('modalAgendar').classList.remove('active');
