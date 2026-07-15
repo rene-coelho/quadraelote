@@ -1,1 +1,22 @@
 desktop.ini
+
+# Environment variables and secrets
+.env
+.env.*
+*.key
+*.pem
+credentials.json
+service-account*.json
+*.secret
+*.secrets
+
+# Local development
+*.local
+*.local.*
+.DS_Store
+Thumbs.db
+
+# Logs and temp files
+*.log
+*.tmp
+*.temp
