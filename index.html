@@ -594,6 +594,13 @@
       if(res.ok || res.status === 201){
         feedback.style.cssText = 'display:block; background:#e8f5e9; color:#2e7d32; padding:10px; border-radius:6px; font-size:14px; margin-bottom:12px;';
         feedback.textContent = '✓ Cadastro recebido! Nossa equipe entra em contato em até 1 dia útil.';
+
+        fetch('/api/notificar-proprietario', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ nome, tel, tipo, endereco: end, msg })
+        }).catch(() => {});
+
         e.target.reset();
         setTimeout(() => {
           document.getElementById('modalCadastro').classList.remove('active');
