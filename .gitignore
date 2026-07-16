@@ -20,3 +20,6 @@ Thumbs.db
 *.log
 *.tmp
 *.temp
+
+# Registro interno — não versionar
+docs/HISTORICO_SESSOES.md
