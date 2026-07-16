@@ -506,6 +506,25 @@ function simular(){
   // mostra resultados
   document.getElementById('results-col').classList.add('visible');
   setTimeout(()=>document.getElementById('results-col').scrollIntoView({behavior:'smooth',block:'start'}),100);
+
+  notificarTelegramSimulacao({
+    imovel: fmtBRL(imovel),
+    entrada: fmtBRL(entrada),
+    entPct: entPct,
+    prazo: prazo,
+    whats: whats,
+    email: email
+  });
+}
+
+async function notificarTelegramSimulacao(dados) {
+  try {
+    await fetch('/api/notificar-simulacao', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(dados)
+    });
+  } catch(e) { /* silencioso — não interrompe o fluxo */ }
 }
 
 /* init */
