@@ -21,5 +21,12 @@ Thumbs.db
 *.tmp
 *.temp
 
-# Registro interno — não versionar
+# Registro e documentação interna — não versionar
 docs/HISTORICO_SESSOES.md
+docs/SITE_CONFIG.md
+docs/INSTAGRAM_STRATEGY.md
+docs/setup-instagram-legacy-vps.md
+.claude/skills/instagram-carousel.md
+.claude/skills/setup-instagram.md
+database/supabase_setup.sql
+CLAUDE.md
