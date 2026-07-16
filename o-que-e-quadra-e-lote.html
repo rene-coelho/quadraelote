@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="/assets/icone_QeL.png">
+<title>O que é Quadra e Lote no IPTU? Significado e Importância | Quadra e Lote BH</title>
+<meta name="description" content="Entenda o que significa quadra e lote no IPTU, por que esse identificador é essencial na compra e venda de imóveis e como verificar na documentação do seu imóvel.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://quadraelote.com.br/o-que-e-quadra-e-lote">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+  :root{
+    --obsidian:#15211f;
+    --petrol:#1a3a5f;
+    --skyblue:#60a8c9;
+    --offwhite:#FAFAF7;
+    --line:#dedcd4;
+    --text-soft:#5a5a55;
+    --radius-sm:4px;
+    --radius-md:6px;
+    --maxw:1180px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{
+    font-family:'Inter',sans-serif;
+    color:var(--obsidian);
+    background:var(--offwhite);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{display:block;max-width:100%;}
+  a{color:inherit;}
+
+  /* ── HEADER ── */
+  header{
+    background:var(--offwhite);
+    border-bottom:1px solid var(--line);
+    position:sticky; top:0; z-index:200;
+  }
+  .header-inner{
+    max-width:var(--maxw); margin:0 auto;
+    padding:18px 24px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .brand{display:flex; align-items:center; gap:10px; text-decoration:none;}
+  .brand-logo{height:32px; width:auto; display:block;}
+  .header-cta{
+    display:flex; align-items:center; gap:8px;
+    padding:10px 20px;
+    background:var(--petrol); color:#fff;
+    border-radius:var(--radius-sm);
+    text-decoration:none; font-size:14px; font-weight:600;
+    transition:background .15s;
+  }
+  .header-cta:hover{background:var(--obsidian);}
+
+  .page-wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px;}
+
+  section{padding:64px 0;}
+  .eyebrow{
+    font-size:13px; font-weight:600; color:var(--petrol);
+    text-transform:uppercase; letter-spacing:0.6px; margin-bottom:10px;
+  }
+
+  /* ── HERO ── */
+  .hero{padding:56px 0 40px;}
+  .hero-title{
+    font-size:34px; font-weight:600; letter-spacing:-0.6px;
+    margin-bottom:14px; max-width:720px;
+  }
+  .hero-sub{
+    font-size:16.5px; color:var(--text-soft);
+    max-width:640px; line-height:1.65;
+  }
+
+  /* ── SEÇÕES DE TEXTO ── */
+  .section-title{font-size:22px; font-weight:600; letter-spacing:-0.3px; margin-bottom:20px;}
+  .body-text{font-size:15px; color:var(--text-soft); line-height:1.75; max-width:680px; margin-bottom:14px;}
+  .body-text strong{color:var(--obsidian); font-weight:600;}
+
+  /* ── IPTU BOX ── */
+  .iptu-box{
+    background:#fff; border:1px solid var(--line); border-radius:var(--radius-md);
+    padding:32px; max-width:520px; margin-top:8px;
+  }
+  .iptu-box-title{
+    font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:0.5px;
+    color:var(--text-soft); margin-bottom:18px; display:flex; align-items:center; gap:8px;
+  }
+  .iptu-fields{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:18px;}
+  .iptu-field{
+    border:1px solid var(--line); border-radius:var(--radius-sm);
+    background:var(--offwhite); padding:14px 16px;
+  }
+  .iptu-field-label{font-size:11px; font-weight:600; color:var(--petrol); text-transform:uppercase; letter-spacing:0.4px; margin-bottom:6px;}
+  .iptu-field-value{font-size:16px; font-weight:600; color:var(--obsidian); letter-spacing:0.5px;}
+  .iptu-note{font-size:13px; color:var(--text-soft); line-height:1.6; display:flex; gap:8px; align-items:flex-start;}
+  .iptu-note i{color:var(--skyblue); margin-top:2px; flex-shrink:0;}
+
+  /* ── LISTA POR QUE IMPORTA ── */
+  .why-list{max-width:680px;}
+  .why-item{display:flex; gap:18px; padding:20px 0; border-top:1px solid var(--line);}
+  .why-item:last-child{border-bottom:1px solid var(--line);}
+  .why-num{
+    min-width:28px; height:28px;
+    border:1.5px solid var(--petrol); border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-size:12px; font-weight:700; color:var(--petrol);
+    flex-shrink:0;
+  }
+  .why-item p{font-size:15px; color:var(--obsidian); line-height:1.65; padding-top:3px;}
+
+  /* ── TABELA COMPARATIVA (dark) ── */
+  .compare-section{
+    background:var(--obsidian);
+    margin:0 -24px;
+    padding:64px 24px;
+  }
+  .compare-section .eyebrow{color:var(--skyblue);}
+  .compare-section .section-title{color:#fff;}
+  .compare-table{
+    width:100%; max-width:820px;
+    border-collapse:collapse;
+    background:rgba(255,255,255,0.03);
+    border:1px solid rgba(255,255,255,0.1);
+    border-radius:var(--radius-md);
+    overflow:hidden;
+  }
+  .compare-table th,.compare-table td{
+    text-align:left; padding:16px 20px;
+    font-size:14px; border-bottom:1px solid rgba(255,255,255,0.08);
+  }
+  .compare-table th{
+    font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:0.4px;
+    color:var(--skyblue); background:rgba(255,255,255,0.03);
+  }
+  .compare-table td{color:rgba(255,255,255,0.75);}
+  .compare-table td:first-child{color:#fff; font-weight:600;}
+  .compare-table tr:last-child td{border-bottom:none;}
+
+  /* ── CTA FINAL ── */
+  .cta-section{
+    background:var(--petrol);
+    margin:0 -24px;
+    padding:64px 24px;
+    text-align:center;
+  }
+  .cta-section .eyebrow{color:var(--skyblue);}
+  .cta-section h2{font-size:26px; font-weight:600; color:#fff; letter-spacing:-0.4px; margin-bottom:24px;}
+  .btn-white{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:14px 28px; border-radius:var(--radius-sm);
+    border:1.5px solid rgba(255,255,255,0.3); background:#fff; color:var(--petrol);
+    font-family:'Inter',sans-serif; font-size:14px; font-weight:600;
+    text-decoration:none; transition:all .15s;
+  }
+  .btn-white:hover{background:rgba(255,255,255,0.92);}
+
+  /* ── FOOTER ── */
+  footer{
+    border-top:1px solid var(--line);
+    padding:20px 24px;
+    text-align:center;
+  }
+  .footer-inner{
+    max-width:var(--maxw); margin:0 auto;
+    display:flex; align-items:center; justify-content:space-between;
+    gap:16px; flex-wrap:wrap;
+  }
+  .footer-copy{font-size:12.5px; color:var(--text-soft);}
+  .footer-back{
+    font-size:13px; font-weight:600; color:var(--petrol);
+    text-decoration:none; display:flex; align-items:center; gap:6px;
+  }
+  .footer-back:hover{color:var(--obsidian);}
+
+  @media(max-width:560px){
+    .hero-title{font-size:26px;}
+    .iptu-fields{grid-template-columns:1fr;}
+    .compare-table{font-size:13px;}
+    .compare-table th,.compare-table td{padding:12px 14px;}
+    .footer-inner{justify-content:center; text-align:center;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<header>
+  <div class="header-inner">
+    <a href="/" class="brand">
+      <img src="/assets/Logo_QeL.png" alt="quadra e lote" class="brand-logo">
+    </a>
+    <a href="https://wa.me/553128881091" target="_blank" class="header-cta">
+      <i class="fa-brands fa-whatsapp"></i> falar agora
+    </a>
+  </div>
+</header>
+
+<div class="page-wrap">
+
+  <!-- ── HERO ── -->
+  <section class="hero">
+    <div class="eyebrow">conceito</div>
+    <h1 class="hero-title">o que é quadra e lote?</h1>
+    <p class="hero-sub">o identificador que aparece em toda guia de iptu do brasil — e que define a identidade cadastral do seu imóvel.</p>
+  </section>
+
+  <!-- ── A ORIGEM DO TERMO ── -->
+  <section>
+    <div class="section-title">a origem do termo</div>
+    <p class="body-text"><strong>quadra</strong> é a subdivisão do quarteirão dentro do cadastro municipal.</p>
+    <p class="body-text"><strong>lote</strong> é a unidade individual dentro dessa quadra.</p>
+    <p class="body-text">juntos, quadra e lote identificam de forma única qualquer imóvel no sistema tributário municipal — é o equivalente a um "endereço cadastral" que a prefeitura usa para cobrar o iptu e organizar o território.</p>
+  </section>
+
+  <!-- ── ONDE APARECE NO IPTU ── -->
+  <section>
+    <div class="section-title">onde aparece no seu iptu</div>
+    <div class="iptu-box">
+      <div class="iptu-box-title"><i class="fa-solid fa-file-invoice"></i> guia de iptu — cadastro imobiliário</div>
+      <div class="iptu-fields">
+        <div class="iptu-field">
+          <div class="iptu-field-label">quadra</div>
+          <div class="iptu-field-value">XX</div>
+        </div>
+        <div class="iptu-field">
+          <div class="iptu-field-label">lote</div>
+          <div class="iptu-field-value">XXXX</div>
+        </div>
+      </div>
+      <div class="iptu-note">
+        <i class="fa-solid fa-circle-info"></i>
+        esses dois campos aparecem em toda guia de iptu emitida no brasil.
+      </div>
+    </div>
+  </section>
+
+  <!-- ── POR QUE ISSO IMPORTA ── -->
+  <section>
+    <div class="section-title">por que isso importa na compra e venda</div>
+    <div class="why-list">
+      <div class="why-item">
+        <div class="why-num">1</div>
+        <p>a escritura de compra e venda precisa citar quadra e lote para ter validade cadastral</p>
+      </div>
+      <div class="why-item">
+        <div class="why-num">2</div>
+        <p>a certidão de matrícula no cartório usa a mesma referência do cadastro municipal</p>
+      </div>
+      <div class="why-item">
+        <div class="why-num">3</div>
+        <p>divergência entre o iptu e a matrícula pode travar ou anular um negócio</p>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- ── TABELA COMPARATIVA (dark) ── -->
+<section class="compare-section">
+  <div class="page-wrap" style="padding:0;">
+    <div class="eyebrow">comparação</div>
+    <div class="section-title">quadra e lote vs. matrícula vs. endereço</div>
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>identificador</th>
+          <th>onde aparece</th>
+          <th>para que serve</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>quadra e lote</td>
+          <td>guia de iptu</td>
+          <td>identificação no cadastro municipal</td>
+        </tr>
+        <tr>
+          <td>matrícula</td>
+          <td>certidão do cartório</td>
+          <td>registro oficial da propriedade</td>
+        </tr>
+        <tr>
+          <td>endereço</td>
+          <td>correspondência</td>
+          <td>localização física</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ── CTA FINAL ── -->
+<section class="cta-section">
+  <div class="eyebrow">precisa de ajuda?</div>
+  <h2>ficou com dúvida sobre a documentação do seu imóvel?</h2>
+  <a href="https://wa.me/553128881091" target="_blank" class="btn-white">
+    <i class="fa-brands fa-whatsapp"></i> falar com a quadra e lote
+  </a>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <span class="footer-copy">© 2026 Quadra e Lote Negócios Imobiliários</span>
+    <a href="/" class="footer-back"><i class="fa-solid fa-arrow-left"></i> voltar ao início</a>
+  </div>
+</footer>
+
+</body>
+</html>
