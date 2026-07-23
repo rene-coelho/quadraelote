@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="/assets/icone_QeL.png">
+<title>[TESTE] Casa 4 Quartos — Bairro Santa Amélia, Belo Horizonte | Quadra e Lote</title>
+<meta name="description" content="Casa com 4 quartos no bairro Santa Amélia, BH. Agendamento de visita direto, documentação completa e financiamento facilitado.">
+<meta name="robots" content="noindex, nofollow">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+  :root{
+    --obsidian:#15211f;
+    --obsidian-soft:#1c2b28;
+    --obsidian-card:#223330;
+    --petrol:#1a3a5f;
+    --skyblue:#60a8c9;
+    --offwhite:#FAFAF7;
+    --creme-suave:#c7cac6;
+    --line-dark:rgba(250,250,247,0.10);
+    --radius-sm:4px;
+    --radius-md:6px;
+    --maxw:1180px;
+  }
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  html,body{
+    font-family:'Inter',sans-serif;
+    color:var(--offwhite);
+    background:var(--obsidian);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{display:block;max-width:100%;}
+  a{color:inherit;}
+  .page-wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px;}
+
+  /* HERO */
+  .hero{position:relative; min-height:100vh; display:flex; flex-direction:column; justify-content:flex-end; overflow:hidden;}
+  .hero-bg{
+    position:absolute; inset:0;
+    background-image:url('/assets/img/santa-amelia/QeL_Fachada_1.webp');
+    background-size:cover; background-position:center 35%;
+    filter:grayscale(35%) contrast(1.08);
+  }
+  .hero-bg::after{
+    content:''; position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(21,33,31,0.15) 0%, rgba(26,58,95,0.22) 42%, rgba(21,33,31,0.94) 78%, var(--obsidian) 100%);
+  }
+  .hero-badge{
+    position:absolute; top:28px; right:28px; z-index:2;
+    background:var(--petrol); color:var(--offwhite);
+    font-size:11px; font-weight:600; letter-spacing:0.16em; text-transform:uppercase;
+    padding:8px 14px; border-radius:var(--radius-sm); border:1px solid rgba(96,168,201,0.35);
+  }
+  .hero-content{position:relative; z-index:2; padding:0 24px 64px; max-width:var(--maxw); margin:0 auto; width:100%;}
+  .hero-eyebrow{
+    font-size:12px; font-weight:600; letter-spacing:0.2em; text-transform:uppercase;
+    color:var(--skyblue); margin-bottom:16px; display:flex; align-items:center; gap:12px;
+  }
+  .hero-eyebrow::before{content:''; display:inline-block; width:36px; height:1px; background:var(--skyblue); flex-shrink:0;}
+  .hero-title{
+    font-size:clamp(30px, 5.2vw, 54px); font-weight:800; line-height:1.04;
+    letter-spacing:-0.02em; max-width:760px; margin-bottom:14px;
+  }
+  .hero-title span{color:var(--skyblue);}
+  .hero-sub{font-size:clamp(14px, 1.3vw, 16px); font-weight:300; color:var(--creme-suave); max-width:520px; margin-bottom:32px;}
+  .hero-stats{display:flex; gap:32px; flex-wrap:wrap;}
+  .hero-stat{display:flex; flex-direction:column; gap:3px;}
+  .hero-stat-value{font-size:26px; font-weight:700; line-height:1;}
+  .hero-stat-label{font-size:11px; font-weight:500; letter-spacing:0.14em; text-transform:uppercase; color:var(--skyblue);}
+  .hero-divider{width:1px; background:rgba(96,168,201,0.3); align-self:stretch;}
+  .hero-video-btn{margin-top:28px; padding:11px 20px; font-size:13px;}
+  .scroll-hint{
+    position:absolute; bottom:28px; right:6vw; z-index:2;
+    display:flex; align-items:center; gap:10px;
+    font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--creme-suave); opacity:0.65;
+  }
+  .scroll-line{width:36px; height:1px; background:var(--creme-suave);}
+
+  /* seções genéricas */
+  section{padding:80px 0;}
+  .section-eyebrow{
+    font-size:11px; font-weight:600; letter-spacing:0.2em; text-transform:uppercase;
+    color:var(--skyblue); margin-bottom:14px; display:flex; align-items:center; gap:10px;
+  }
+  .section-eyebrow::before{content:''; display:inline-block; width:22px; height:1px; background:var(--skyblue);}
+  .section-title{font-size:clamp(24px, 3vw, 32px); font-weight:700; line-height:1.15; letter-spacing:-0.01em; max-width:640px;}
+  .section-lede{font-size:15.5px; font-weight:300; line-height:1.8; color:var(--creme-suave); margin-bottom:16px; max-width:620px;}
+  .section-lede:last-of-type{margin-bottom:0;}
+  .section-lede strong{color:var(--offwhite); font-weight:500;}
+  .text-link{color:var(--skyblue); font-weight:500; text-decoration:underline; text-underline-offset:2px;}
+  .text-link:hover{color:var(--offwhite);}
+
+  /* posicionamento */
+  .posicionamento{background:var(--obsidian-soft); border-top:1px solid var(--line-dark); border-bottom:1px solid var(--line-dark);}
+  .pos-grid{display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:start; margin-top:36px;}
+  .pos-destaque{background:var(--obsidian-card); border-left:3px solid var(--petrol); padding:22px 24px; margin-top:24px; border-radius:0 var(--radius-sm) var(--radius-sm) 0;}
+  .pos-destaque p{font-size:14px; color:var(--creme-suave); line-height:1.75;}
+  .pos-destaque p strong{color:var(--skyblue); font-weight:600;}
+  .numero-cards{display:flex; flex-direction:column; gap:16px;}
+  .numero-card{background:var(--obsidian-card); border:1px solid var(--line-dark); border-radius:var(--radius-md); padding:22px 24px;}
+  .numero-card-valor{font-size:26px; font-weight:700; color:var(--offwhite); line-height:1;}
+  .numero-card-label{font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:0.1em; color:var(--skyblue); margin:8px 0 8px;}
+  .numero-card-desc{font-size:13px; color:var(--creme-suave); line-height:1.6;}
+
+  /* galeria */
+  .dossier-gallery{display:grid; grid-template-columns:repeat(4,1fr); grid-auto-rows:180px; gap:6px; margin-top:36px;}
+  .dossier-item{position:relative; overflow:hidden; border-radius:var(--radius-sm); cursor:pointer;}
+  .dossier-item.span-row{grid-row:span 2; grid-column:span 2;}
+  .dossier-item img{width:100%; height:100%; object-fit:cover; display:block; transition:transform .35s ease; filter:saturate(0.94);}
+  .dossier-item:hover img{transform:scale(1.04);}
+  .dossier-item::after{
+    content:attr(data-caption); position:absolute; left:0; right:0; bottom:0;
+    padding:20px 12px 10px; font-size:11px; letter-spacing:0.03em; color:var(--offwhite);
+    background:linear-gradient(0deg, rgba(21,33,31,0.85) 0%, rgba(21,33,31,0) 100%);
+  }
+  .gallery-note{font-size:12px; color:var(--creme-suave); opacity:0.5; font-style:italic; margin-top:16px;}
+
+  /* composição do imóvel */
+  .comp-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line-dark); margin-top:36px; border-radius:var(--radius-md); overflow:hidden;}
+  .comp-item{background:var(--obsidian); padding:28px 26px;}
+  .comp-item-icon{color:var(--skyblue); font-size:18px; margin-bottom:16px;}
+  .comp-item-title{font-size:14px; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; color:var(--skyblue); margin-bottom:14px;}
+  .comp-item-list{list-style:none;}
+  .comp-item-list li{font-size:13.5px; color:var(--creme-suave); padding:6px 0; border-bottom:1px solid var(--line-dark); display:flex; align-items:center; gap:9px;}
+  .comp-item-list li:last-child{border-bottom:none;}
+  .comp-item-list li i{color:var(--skyblue); font-size:12px; width:14px; flex-shrink:0;}
+
+  /* documentação (legal) */
+  .legal{background:var(--obsidian-soft); border-top:1px solid var(--line-dark); border-bottom:1px solid var(--line-dark);}
+  .legal-box{
+    background:var(--obsidian-card); border-left:3px solid var(--skyblue); border-radius:0 var(--radius-md) var(--radius-md) 0;
+    padding:28px 30px; margin-top:32px; max-width:680px;
+  }
+  .legal-box-title{
+    font-size:13px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--skyblue);
+    margin-bottom:12px; display:flex; align-items:center; gap:10px;
+  }
+  .legal-box p{font-size:14.5px; color:var(--creme-suave); line-height:1.75;}
+
+  /* localização */
+  .loc-grid{display:grid; grid-template-columns:1.1fr 1fr; gap:48px; align-items:start; margin-top:36px;}
+  .loc-mapa{position:relative; height:320px; border-radius:var(--radius-md); overflow:hidden; background:var(--obsidian-card);}
+  .loc-mapa .btn-map-street{position:absolute; left:16px; bottom:16px; z-index:10;}
+  .loc-info p{font-size:14.5px; color:var(--creme-suave); line-height:1.8; margin-bottom:16px; font-weight:300;}
+  .loc-info p strong{color:var(--offwhite); font-weight:600;}
+  .loc-atributos{list-style:none; margin-top:8px;}
+  .loc-atributos li{font-size:13.5px; color:var(--creme-suave); padding:7px 0 7px 20px; position:relative;}
+  .loc-atributos li::before{content:''; position:absolute; left:0; top:15px; width:5px; height:5px; border-radius:50%; background:var(--skyblue);}
+
+  .accordion-l1{border-top:1px solid var(--line-dark); border-bottom:1px solid var(--line-dark); margin-top:32px;}
+  .accordion-l1-head{
+    width:100%; display:flex; align-items:center; justify-content:space-between;
+    padding:18px 0; background:none; border:none; cursor:pointer;
+    font-family:'Inter',sans-serif; font-size:15px; font-weight:600; color:var(--offwhite); text-align:left;
+  }
+  .accordion-l1-head i{color:var(--skyblue); transition:transform .15s; font-size:13px;}
+  .accordion-l1.open > .accordion-l1-head i{transform:rotate(180deg);}
+  .accordion-l1-body{display:none; padding-bottom:26px;}
+  .accordion-l1.open > .accordion-l1-body{display:block;}
+
+  .accordion-l2{border-top:1px solid var(--line-dark); margin-top:14px;}
+  .accordion-l2-head{
+    width:100%; display:flex; align-items:center; justify-content:space-between;
+    padding:14px 0; background:none; border:none; cursor:pointer;
+    font-family:'Inter',sans-serif; font-size:13.5px; font-weight:600; color:var(--offwhite); text-align:left;
+  }
+  .accordion-l2-head i{color:var(--skyblue); transition:transform .15s; font-size:12px;}
+  .accordion-l2.open > .accordion-l2-head i{transform:rotate(180deg);}
+  .accordion-l2-body{display:none; padding-bottom:8px;}
+  .accordion-l2.open > .accordion-l2-body{display:block;}
+  .proximity-group{margin-bottom:18px;}
+  .proximity-group:last-child{margin-bottom:0;}
+  .proximity-label{font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; color:var(--skyblue); margin-bottom:8px;}
+  .proximity-group ul{list-style:none;}
+  .proximity-group li{font-size:13px; color:var(--creme-suave); padding:5px 0 5px 16px; position:relative;}
+  .proximity-group li::before{content:''; position:absolute; left:0; top:12px; width:4px; height:4px; border-radius:50%; background:var(--skyblue);}
+
+  /* condições comerciais */
+  .condicoes{background:var(--obsidian-soft); border-top:1px solid var(--line-dark); border-bottom:1px solid var(--line-dark);}
+  .cond-grid{display:flex; gap:56px; margin-top:36px; flex-wrap:wrap;}
+  .cond-bloco{flex:1; min-width:220px;}
+  .cond-titulo{font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:0.12em; color:var(--skyblue); margin-bottom:10px;}
+  .cond-valor{font-size:30px; font-weight:700; color:var(--offwhite); margin-bottom:10px;}
+  .cond-detalhe{font-size:13.5px; color:var(--creme-suave); line-height:1.7; font-weight:300;}
+  .cond-detalhe strong{color:var(--offwhite); font-weight:600;}
+  .cond-divider{width:1px; background:var(--line-dark);}
+  @media(max-width:700px){.cond-divider{display:none;}}
+
+  .taxes-note{font-size:13px; color:var(--creme-suave); max-width:600px; margin-bottom:20px; font-weight:300;}
+  .tax-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line-dark); border-radius:var(--radius-md); overflow:hidden;}
+  .tax-card{background:var(--obsidian-card); padding:22px; display:flex; flex-direction:column; gap:10px;}
+  .tax-card-icon{width:36px; height:36px; border-radius:50%; background:var(--obsidian); border:1px solid var(--line-dark); display:flex; align-items:center; justify-content:center;}
+  .tax-card-icon i{color:var(--skyblue); font-size:14px;}
+  .tax-card-title{font-size:14px; font-weight:600; color:var(--offwhite);}
+  .tax-card-value{font-size:14px; font-weight:700; color:var(--skyblue);}
+  .tax-card-desc{font-size:12.5px; color:var(--creme-suave); line-height:1.6; font-weight:300;}
+  @media(max-width:700px){.tax-grid{grid-template-columns:1fr;}}
+
+  /* cta final */
+  .cta-section{text-align:left; padding:96px 0;}
+  .cta-titulo{font-size:clamp(26px,4vw,40px); font-weight:800; letter-spacing:-0.01em; line-height:1.15; max-width:680px; margin-bottom:18px;}
+  .cta-sub{font-size:15px; color:var(--creme-suave); max-width:520px; margin-bottom:32px; font-weight:300; line-height:1.7;}
+  .cta-buttons{display:flex; gap:14px; flex-wrap:wrap; align-items:center;}
+
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:9px;
+    padding:14px 24px; border-radius:var(--radius-sm); border:1.5px solid transparent;
+    font-family:'Inter',sans-serif; font-size:14px; font-weight:600; cursor:pointer; text-decoration:none;
+    transition:all .15s;
+  }
+  .btn-primary{background:var(--petrol); color:#fff; border-color:var(--petrol);}
+  .btn-primary:hover{background:#245080; border-color:#245080;}
+  .btn-ghost{background:transparent; color:var(--offwhite); border-color:rgba(250,250,247,0.3);}
+  .btn-ghost:hover{border-color:var(--skyblue); color:var(--skyblue);}
+  .btn-light{background:#fff; color:var(--obsidian); border-color:#fff;}
+  .btn-light:hover{background:var(--offwhite);}
+  .btn i{font-size:14px;}
+
+  /* footer */
+  footer{padding:40px 0 32px; border-top:1px solid var(--line-dark);}
+  .footer-inner{display:flex; flex-direction:column; align-items:flex-start; gap:6px;}
+  .footer-inner .exclusive{font-size:12px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:var(--skyblue);}
+  .footer-inner .footer-desc{font-size:12.5px; color:var(--creme-suave); opacity:0.7;}
+  .footer-bottom{margin-top:18px; display:flex; gap:16px; flex-wrap:wrap; font-size:12px; color:rgba(250,250,247,0.45);}
+  .footer-bottom a{color:rgba(250,250,247,0.45); text-decoration:none;}
+  .footer-bottom a:hover{color:var(--offwhite);}
+
+  /* modais / lightbox (superfícies claras, funcionalidade preservada) */
+  .modal-bg{display:none; position:fixed; inset:0; background:rgba(0,0,0,0.65); z-index:1000; align-items:center; justify-content:center; padding:20px;}
+  .modal-bg.active{display:flex;}
+  .modal-box{background:var(--offwhite); color:var(--obsidian); border-radius:var(--radius-md); padding:32px; max-width:460px; width:100%; max-height:88vh; overflow-y:auto; position:relative;}
+  .modal-close{position:absolute; top:16px; right:16px; background:none; border:none; font-size:20px; cursor:pointer; color:#5a5a55; line-height:1;}
+  .modal-title{font-size:20px; font-weight:600; margin-bottom:20px;}
+  .field{margin-bottom:14px;}
+  .field label{display:block; font-size:13px; font-weight:600; margin-bottom:6px;}
+  .field input,.field textarea{width:100%; padding:10px 12px; border:1px solid #dedcd4; border-radius:var(--radius-sm); font-family:'Inter',sans-serif; font-size:14px; color:var(--obsidian); background:#fff;}
+  .field input:focus,.field textarea:focus{outline:none; border-color:var(--petrol);}
+  .field textarea{resize:vertical; min-height:80px;}
+  .field .btn{width:100%;}
+  .chips-dias{display:flex; flex-wrap:wrap; gap:8px; margin-top:6px;}
+  .chips-horas{display:grid; grid-template-columns:repeat(5,1fr); gap:8px; margin-top:6px;}
+  .chip{padding:8px 14px; border:1px solid #dedcd4; border-radius:20px; font-size:13px; cursor:pointer; background:var(--offwhite); color:var(--obsidian); transition:background .15s, color .15s; user-select:none;}
+  .chip:hover:not(.chip-disabled){border-color:var(--petrol);}
+  .chip.chip-selected{background:var(--petrol); color:#fff; border-color:var(--petrol);}
+  .chip.chip-disabled{opacity:0.35; cursor:not-allowed;}
+  .chip-dia{min-width:52px; text-align:center; line-height:1.3;}
+  .chip-dia .chip-weekday{font-size:11px; text-transform:uppercase; letter-spacing:.5px;}
+  .chip-dia .chip-day{font-size:16px; font-weight:600;}
+
+  .lightbox{display:none; position:fixed; inset:0; background:rgba(0,0,0,.94); z-index:2000; align-items:center; justify-content:center;}
+  .lightbox.active{display:flex;}
+  .lightbox-img{max-width:90vw; max-height:88vh; object-fit:contain; border-radius:var(--radius-sm); display:block;}
+  .lightbox-close{position:fixed; top:16px; right:20px; background:none; border:none; color:#fff; font-size:28px; cursor:pointer; line-height:1; z-index:2001;}
+  .lightbox-prev,.lightbox-next{position:fixed; top:50%; transform:translateY(-50%); background:none; border:none; color:#fff; font-size:32px; cursor:pointer; padding:16px; z-index:2001; opacity:.7;}
+  .lightbox-prev{left:8px;} .lightbox-next{right:8px;}
+  .lightbox-prev:hover,.lightbox-next:hover{opacity:1;}
+  .lightbox-counter{position:fixed; bottom:16px; left:50%; transform:translateX(-50%); color:#fff; font-size:13px; opacity:.7;}
+
+  /* barra fixa mobile "agendar visita" */
+  .sticky-visit-bar{
+    display:none; position:fixed; left:0; right:0; bottom:0; z-index:500;
+    background:var(--petrol); box-shadow:0 -2px 14px rgba(0,0,0,0.3);
+    transform:translateY(100%); transition:transform .25s ease;
+    padding:10px 16px calc(10px + env(safe-area-inset-bottom));
+  }
+  .sticky-visit-bar.visible{transform:translateY(0);}
+  .sticky-visit-bar-btn{
+    display:flex; align-items:center; justify-content:center; gap:8px; width:100%;
+    background:none; border:none; color:#fff; font-family:'Inter',sans-serif; font-size:15px; font-weight:600;
+    padding:13px 16px; cursor:pointer;
+  }
+
+  @media(max-width:860px){
+    .pos-grid{grid-template-columns:1fr; gap:32px;}
+    .comp-grid{grid-template-columns:1fr;}
+    .loc-grid{grid-template-columns:1fr; gap:32px;}
+    .dossier-gallery{grid-template-columns:repeat(2,1fr); grid-auto-rows:150px;}
+    .dossier-item.span-row{grid-column:span 2; grid-row:span 1; height:100%;}
+    section{padding:56px 0;}
+    .cta-section{padding:64px 0;}
+    .sticky-visit-bar{display:block;}
+  }
+  @media(max-width:600px){.tax-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-badge">apresentação exclusiva</div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">casa à venda · santa amélia</div>
+    <h1 class="hero-title">seu novo endereço no <span>santa amélia</span></h1>
+    <p class="hero-sub">Residência de 336 m² em esquina privilegiada, com documentação integralmente regularizada e pronta para financiamento.</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><span class="hero-stat-value">4</span><span class="hero-stat-label">quartos</span></div>
+      <div class="hero-divider"></div>
+      <div class="hero-stat"><span class="hero-stat-value">336</span><span class="hero-stat-label">m² construídos</span></div>
+      <div class="hero-divider"></div>
+      <div class="hero-stat"><span class="hero-stat-value">4</span><span class="hero-stat-label">vagas</span></div>
+    </div>
+    <button class="btn btn-ghost hero-video-btn" onclick="document.getElementById('modalVideo').classList.add('active')">
+      <i class="fa-solid fa-play"></i> assistir ao vídeo
+    </button>
+  </div>
+  <div class="scroll-hint"><span class="scroll-line"></span>conheça o imóvel</div>
+</div>
+
+<section class="posicionamento">
+  <div class="page-wrap">
+    <p class="section-eyebrow">posicionamento</p>
+    <h2 class="section-title">Uma residência consolidada em um dos endereços mais procurados da Pampulha</h2>
+
+    <div class="pos-grid">
+      <div>
+        <p class="section-lede">Em uma esquina privilegiada de um dos bairros mais consolidados de Belo Horizonte, esta residência foi planejada para proporcionar <strong>conforto, funcionalidade e qualidade de vida</strong> para toda a família.</p>
+        <p class="section-lede">Antes de chegar até você, este imóvel passou pela mesma conferência de documentação que sustenta a <a href="/o-que-e-quadra-e-lote" class="text-link">identidade oficial</a> de cada propriedade apresentada pela Quadra e Lote — um processo que confirma que a casa está pronta para negociação e registro, sem surpresas pelo caminho.</p>
+
+        <div class="pos-destaque">
+          <p><strong>336 m² em dois pavimentos bem resolvidos</strong>, com ambientes amplos, excelente iluminação natural e uma planta que favorece tanto a convivência quanto a privacidade.</p>
+        </div>
+      </div>
+
+      <div class="numero-cards">
+        <div class="numero-card">
+          <div class="numero-card-valor">360 m²</div>
+          <div class="numero-card-label">terreno de esquina</div>
+          <div class="numero-card-desc">Quintal com churrasqueira e uma charmosa jabuticabeira, espaço pensado para reunir família e amigos.</div>
+        </div>
+        <div class="numero-card">
+          <div class="numero-card-valor">2</div>
+          <div class="numero-card-label">pavimentos</div>
+          <div class="numero-card-desc">Área social e de serviço no térreo, área íntima com quatro quartos no pavimento superior.</div>
+        </div>
+        <div class="numero-card">
+          <div class="numero-card-valor">4</div>
+          <div class="numero-card-label">vagas de garagem</div>
+          <div class="numero-card-desc">Espaço coberto com capacidade para até quatro veículos.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="galeria">
+  <div class="page-wrap">
+    <p class="section-eyebrow">imóvel</p>
+    <h2 class="section-title">Estrutura e ambientes</h2>
+    <div class="dossier-gallery" id="dossier-gallery"></div>
+    <p class="gallery-note">* Fotos reais do imóvel. Imagens adicionais disponíveis mediante agendamento de visita.</p>
+  </div>
+</section>
+
+<section>
+  <div class="page-wrap">
+    <p class="section-eyebrow">ficha técnica</p>
+    <h2 class="section-title">Composição do imóvel</h2>
+
+    <div class="comp-grid">
+      <div class="comp-item">
+        <div class="comp-item-icon"><i class="fa-solid fa-layer-group"></i></div>
+        <div class="comp-item-title">primeiro pavimento</div>
+        <ul class="comp-item-list">
+          <li><i class="fa-solid fa-couch"></i> sala para dois ambientes</li>
+          <li><i class="fa-solid fa-bed"></i> 1 quarto</li>
+          <li><i class="fa-solid fa-bath"></i> banho social</li>
+          <li><i class="fa-solid fa-kitchen-set"></i> cozinha com ilha</li>
+          <li><i class="fa-solid fa-shirt"></i> área de serviço externa</li>
+          <li><i class="fa-solid fa-fire-burner"></i> espaço externo com churrasqueira</li>
+          <li><i class="fa-solid fa-box"></i> despensa</li>
+          <li><i class="fa-solid fa-tree"></i> quintal com jabuticabeira</li>
+        </ul>
+      </div>
+      <div class="comp-item">
+        <div class="comp-item-icon"><i class="fa-solid fa-layer-group"></i></div>
+        <div class="comp-item-title">segundo pavimento</div>
+        <ul class="comp-item-list">
+          <li><i class="fa-solid fa-bed"></i> 3 quartos, sendo 1 suíte</li>
+          <li><i class="fa-solid fa-bath"></i> banho social</li>
+          <li><i class="fa-solid fa-couch"></i> ampla sala para dois ambientes</li>
+          <li><i class="fa-solid fa-door-open"></i> 3 varandas</li>
+        </ul>
+      </div>
+      <div class="comp-item">
+        <div class="comp-item-icon"><i class="fa-solid fa-square-parking"></i></div>
+        <div class="comp-item-title">garagem</div>
+        <ul class="comp-item-list">
+          <li><i class="fa-solid fa-car"></i> 4 vagas cobertas</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="legal">
+  <div class="page-wrap">
+    <p class="section-eyebrow">documentação</p>
+    <h2 class="section-title">Situação legal e cadastral do imóvel</h2>
+
+    <p class="section-lede" style="margin-top:24px;">Antes de ser anunciado, este imóvel passou por uma conferência da documentação e das principais informações cadastrais.</p>
+    <p class="section-lede">Possui Habite-se, está apto para financiamento bancário e conta com IPTU em dia, acompanhado de certidão negativa de débitos municipais.</p>
+    <p class="section-lede">A documentação foi analisada pela equipe da Quadra e Lote e está regular para prosseguimento da negociação e posterior registro da transferência no Cartório de Registro de Imóveis, observadas as condições da venda. Número de matrícula e demais detalhes cadastrais são compartilhados diretamente com interessados em fase de negociação.</p>
+
+    <div class="legal-box">
+      <div class="legal-box-title"><i class="fa-solid fa-shield-halved"></i> identidade certificada quadra e lote</div>
+      <p>Este imóvel passou por uma análise documental antes de integrar nosso portfólio. Conferimos a documentação, verificamos as principais informações cadastrais e organizamos tudo para proporcionar uma negociação mais transparente e segura.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="page-wrap">
+    <p class="section-eyebrow">localização</p>
+    <h2 class="section-title">Santa Amélia, região da Pampulha</h2>
+
+    <div class="loc-grid">
+      <div>
+        <div class="loc-mapa">
+          <div id="map-real" style="position:absolute; inset:0;"></div>
+          <a href="https://www.google.com/maps?layer=c&cbll=-19.845611,-43.985056" target="_blank" class="btn btn-light btn-map-street">
+            <i class="fa-solid fa-street-view" style="color:var(--petrol);"></i> ver rua
+          </a>
+        </div>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEYXZZNbZtuHlelFcXBYlvo0AlCBN6wXw&callback=initMapaImovel" async defer></script>
+      </div>
+
+      <div class="loc-info">
+        <p><strong>Rua Barão de Camargo — Jardim Atlântico, Belo Horizonte, MG</strong></p>
+        <p>Localizado em um dos pontos mais desejados da região da Pampulha, o Santa Amélia é o equilíbrio entre infraestrutura urbana e qualidade de vida — bairro predominantemente residencial de médio e alto padrão, com ruas tranquilas e amplamente arborizadas.</p>
+        <ul class="loc-atributos">
+          <li>Polo gastronômico da Av. Guarapari a poucos minutos</li>
+          <li>Acesso rápido ao Anel Rodoviário via Av. Portugal e Pedro I</li>
+          <li>Proximidade com a Lagoa da Pampulha e Parque Fazenda Lagoa do Nado</li>
+          <li>Deslocamento facilitado para Centro, aeroportos e demais regiões de BH</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="accordion-l1" id="accordion-bairro">
+      <button class="accordion-l1-head" onclick="toggleAccordion(this)">proximidades <i class="fa-solid fa-chevron-down"></i></button>
+      <div class="accordion-l1-body">
+        <div class="proximity-group">
+          <div class="proximity-label">escolas e educação</div>
+          <ul><li>EMEI Santa Amélia</li><li>Instituto Educacional Recanto dos Anjos</li><li>Colégio Alceu Cotta</li></ul>
+        </div>
+        <div class="proximity-group">
+          <div class="proximity-label">hospitais e saúde</div>
+          <ul><li>Hospital MedSênior - Pampulha</li><li>Hospital Servcor | Hospital Dia</li><li>Centro de Referência em Saúde Mental - Cersam Pampulha</li></ul>
+        </div>
+        <div class="proximity-group">
+          <div class="proximity-label">supermercados</div>
+          <ul><li>Supermercados BH</li><li>Supernosso</li><li>Supermercado Santa Cecília</li></ul>
+        </div>
+        <div class="proximity-group">
+          <div class="proximity-label">padarias e confeitarias</div>
+          <ul><li>Panificadora Portugal</li><li>Padaria Planet Pan</li><li>Padaria Vovó Alice</li></ul>
+        </div>
+        <div class="proximity-group">
+          <div class="proximity-label">parques e áreas de lazer</div>
+          <ul><li>Parque Ecológico da Pampulha</li><li>Parque Guanabara</li><li>Marco Zero da Pampulha</li></ul>
+        </div>
+        <div class="proximity-group">
+          <div class="proximity-label">shoppings e centros comerciais</div>
+          <ul><li>Pampulha Commerce</li><li>Green Plaza Shopping</li><li>Shopping Estação BH</li></ul>
+        </div>
+        <div class="proximity-group">
+          <div class="proximity-label">academias</div>
+          <ul><li>Academia Smart Fit</li><li>Academia Pratique Fitness</li><li>Academia Aqualita | BRfit</li></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="condicoes">
+  <div class="page-wrap">
+    <p class="section-eyebrow">condições comerciais</p>
+    <h2 class="section-title">Negociação direta</h2>
+
+    <div class="cond-grid">
+      <div class="cond-bloco">
+        <p class="cond-titulo">valor de venda</p>
+        <p class="cond-valor">R$ 1.400.000</p>
+        <p class="cond-detalhe">IPTU de <strong>R$ 212,01/mês</strong>, indicador de cadastro municipal atualizado e sem pendências.</p>
+      </div>
+      <div class="cond-divider"></div>
+      <div class="cond-bloco">
+        <p class="cond-titulo">financiamento</p>
+        <p class="cond-valor">Aceita</p>
+        <p class="cond-detalhe">Imóvel com <strong>Habite-se</strong> e documentação regularizada, sem restrições para aprovação bancária.</p>
+      </div>
+    </div>
+
+    <div class="accordion-l1" id="accordion-valores" style="margin-top:40px;">
+      <button class="accordion-l1-head" onclick="toggleAccordion(this)">valores e taxas <i class="fa-solid fa-chevron-down"></i></button>
+      <div class="accordion-l1-body">
+        <p class="taxes-note">Além do valor do imóvel, a compra envolve custos obrigatórios que podem variar conforme a forma de pagamento, a instituição financeira e os benefícios eventualmente aplicáveis à aquisição do primeiro imóvel.</p>
+        <p class="taxes-note">Os valores apresentados abaixo são estimativas para facilitar o planejamento financeiro. Os valores definitivos serão confirmados durante o processo de compra.</p>
+        <div class="tax-grid">
+          <div class="tax-card">
+            <div class="tax-card-icon"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+            <div class="tax-card-title">ITBI</div>
+            <div class="tax-card-value">R$ 42.000</div>
+            <div class="tax-card-desc">Imposto municipal devido pelo comprador para a transferência da propriedade.</div>
+          </div>
+          <div class="tax-card">
+            <div class="tax-card-icon"><i class="fa-solid fa-stamp"></i></div>
+            <div class="tax-card-title">Registro do imóvel</div>
+            <div class="tax-card-value">a partir de R$ 4.000</div>
+            <div class="tax-card-desc">Custos cartorários para registro da escritura ou do contrato de financiamento.</div>
+          </div>
+          <div class="tax-card">
+            <div class="tax-card-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+            <div class="tax-card-title">Vistoria bancária</div>
+            <div class="tax-card-value">a partir de R$ 1.500</div>
+            <div class="tax-card-desc">Taxa cobrada pela instituição financeira quando houver financiamento.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p style="font-size:13px; color:var(--creme-suave); margin-top:24px;">Este ainda não é o imóvel ideal para você? <a href="#" class="text-link" onclick="document.getElementById('modalPerfil').classList.add('active');return false;">descreva o que procura</a> e avisamos quando surgir uma oportunidade dentro do seu perfil.</p>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="page-wrap">
+    <p class="section-eyebrow">próximo passo</p>
+    <h2 class="cta-titulo">Agende uma visita e conheça cada detalhe deste imóvel</h2>
+    <p class="cta-sub">Esta apresentação foi preparada com base na documentação já conferida do imóvel. Temos disponibilidade para visita presencial nos próximos dias.</p>
+    <div class="cta-buttons">
+      <button class="btn btn-primary" onclick="document.getElementById('modalAgendar').classList.add('active')">
+        <i class="fa-solid fa-calendar-days"></i> agendar visita
+      </button>
+      <a href="https://www.google.com/maps?layer=c&cbll=-19.845611,-43.985056" target="_blank" class="btn btn-ghost">
+        <i class="fa-solid fa-location-dot"></i> ver localização no mapa
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="page-wrap footer-inner">
+    <div class="exclusive">santa amélia — apresentação exclusiva quadra e lote</div>
+    <div class="footer-desc">Material preparado para apresentação direta a compradores qualificados.</div>
+    <div class="footer-bottom">
+      <span>© 2026 Quadra e Lote Negócios Imobiliários.</span>
+      <a href="/">voltar ao início</a>
+    </div>
+  </div>
+</footer>
+
+<div class="sticky-visit-bar" id="stickyVisitBar">
+  <button class="btn sticky-visit-bar-btn" onclick="document.getElementById('modalAgendar').classList.add('active')">
+    <i class="fa-solid fa-calendar-days"></i> agendar visita
+  </button>
+</div>
+
+<div class="modal-bg" id="modalAgendar">
+  <div class="modal-box">
+    <button class="modal-close" onclick="document.getElementById('modalAgendar').classList.remove('active')">✕</button>
+    <div class="modal-title">agendar visita</div>
+    <form onsubmit="enviarAgendamento(event)">
+      <div class="field"><label>nome completo</label><input type="text" id="f-nome" required></div>
+      <div class="field"><label>e-mail</label><input type="email" id="f-email" required></div>
+      <div class="field"><label>telefone / whatsapp</label><input type="tel" id="f-tel" required></div>
+      <input type="hidden" id="f-data">
+      <div class="field"><label>escolha um dia</label><div class="chips-dias" id="chips-dias"></div></div>
+      <input type="hidden" id="f-hora">
+      <div class="field"><label>escolha um horário</label><div class="chips-horas" id="chips-horas"></div></div>
+      <div class="field"><label>mensagem (opcional)</label><textarea id="f-msg" placeholder="Tem alguma pergunta específica?"></textarea></div>
+      <div id="agendar-feedback" style="display:none; padding:10px; border-radius:6px; font-size:14px; margin-bottom:12px;"></div>
+      <button type="submit" id="agendar-btn" class="btn btn-primary">confirmar agendamento</button>
+    </form>
+  </div>
+</div>
+
+<div class="modal-bg" id="modalPerfil">
+  <div class="modal-box">
+    <button class="modal-close" onclick="document.getElementById('modalPerfil').classList.remove('active')">✕</button>
+    <div class="modal-title">descreva o imóvel ideal</div>
+    <form onsubmit="enviarPerfil(event)">
+      <div class="field"><label>nome completo</label><input type="text" id="p-nome" required></div>
+      <div class="field"><label>whatsapp</label><input type="tel" id="p-tel" required></div>
+      <div class="field"><label>o que é indispensável para você?</label><textarea id="p-msg" placeholder="Ex: 3 quartos, garagem coberta, bairro X..." required></textarea></div>
+      <div id="perfil-feedback" style="display:none;padding:10px;border-radius:6px;font-size:14px;margin-bottom:12px;"></div>
+      <button type="submit" id="perfil-btn" class="btn btn-primary">enviar</button>
+    </form>
+  </div>
+</div>
+
+<div class="modal-bg" id="modalVideo">
+  <div class="modal-box" style="max-width:720px; padding:16px; background:#000;">
+    <button class="modal-close" onclick="document.getElementById('modalVideo').classList.remove('active')" style="color:#fff;">✕</button>
+    <div style="aspect-ratio:16/9; background:#000; border-radius:var(--radius-sm); overflow:hidden;">
+      <iframe width="100%" height="100%" src="https://www.youtube.com/embed/WHlzcB00nu4" title="Santa Amélia" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+  </div>
+</div>
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lb-close">✕</button>
+  <button class="lightbox-prev" id="lb-prev"><i class="fa-solid fa-chevron-left"></i></button>
+  <img class="lightbox-img" id="lb-img" src="" alt="">
+  <button class="lightbox-next" id="lb-next"><i class="fa-solid fa-chevron-right"></i></button>
+  <div class="lightbox-counter" id="lb-counter"></div>
+</div>
+
+<script>
+const SUPA_URL = 'https://frhhvwuafgkzvxjvihwp.supabase.co';
+const SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZyaGh2d3VhZmdrenZ4anZpaHdwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODMwMjM1NDAsImV4cCI6MjA5ODU5OTU0MH0.rvkR9sBoNwP5lPAxiIL3KboPd7VWMMPCWT96JnGAgBk';
+
+const DIAS_SEMANA = ['dom','seg','ter','qua','qui','sex','sáb'];
+
+function slotsDisponiveis(iso, diaSemana) {
+  const ehSabado = diaSemana === 6;
+  const fimHora = ehSabado ? 14 : 18;
+  const fimMin  = ehSabado ? 0 : 30;
+  const agora = new Date();
+  const hoje = new Date(); hoje.setHours(0,0,0,0);
+  const dataChip = new Date(iso + 'T00:00:00');
+  const ehHoje = dataChip.getTime() === hoje.getTime();
+  const slots = [];
+  for (let h = 8; h <= fimHora; h++) {
+    const mins = (h === fimHora) ? [0, ...(fimMin >= 15 ? [15] : []), ...(fimMin >= 30 ? [30] : []), ...(fimMin >= 45 ? [45] : [])] : [0,15,30,45];
+    for (const m of mins) {
+      if (h === fimHora && m > fimMin) break;
+      if (ehHoje) {
+        const slotTime = new Date(); slotTime.setHours(h, m, 0, 0);
+        const limite = new Date(agora.getTime() + 2 * 60 * 60 * 1000);
+        if (slotTime < limite) continue;
+      }
+      slots.push(`${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}`);
+    }
+  }
+  return slots;
+}
+
+function contarHorasDisponiveis(iso, diaSemana) {
+  return slotsDisponiveis(iso, diaSemana).length;
+}
+
+function gerarChipsDias() {
+  const container = document.getElementById('chips-dias');
+  container.innerHTML = '';
+  const hoje = new Date();
+  hoje.setHours(0,0,0,0);
+  let primeiro = null;
+  for (let i = 0; i < 14; i++) {
+    const d = new Date(hoje);
+    d.setDate(hoje.getDate() + i);
+    const diaSemana = d.getDay();
+    const disabled = diaSemana === 0;
+    const iso = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+    if (!disabled && contarHorasDisponiveis(iso, diaSemana) === 0) continue;
+    const chip = document.createElement('div');
+    chip.className = 'chip chip-dia' + (disabled ? ' chip-disabled' : '');
+    chip.innerHTML = `<div class="chip-weekday">${DIAS_SEMANA[diaSemana]}</div><div class="chip-day">${String(d.getDate()).padStart(2,'0')}</div>`;
+    if (!disabled) {
+      chip.addEventListener('click', () => {
+        document.querySelectorAll('#chips-dias .chip').forEach(c => c.classList.remove('chip-selected'));
+        chip.classList.add('chip-selected');
+        document.getElementById('f-data').value = iso;
+        gerarChipsHoras(iso, diaSemana);
+      });
+      if (!primeiro) primeiro = { chip, iso, diaSemana };
+    }
+    container.appendChild(chip);
+  }
+  if (primeiro) {
+    primeiro.chip.classList.add('chip-selected');
+    document.getElementById('f-data').value = primeiro.iso;
+    gerarChipsHoras(primeiro.iso, primeiro.diaSemana);
+  }
+}
+
+function gerarChipsHoras(iso, diaSemana) {
+  const container = document.getElementById('chips-horas');
+  container.innerHTML = '';
+  document.getElementById('f-hora').value = '';
+  const labels = slotsDisponiveis(iso, diaSemana);
+  let primeiroChip = null;
+  labels.forEach(label => {
+    const chip = document.createElement('div');
+    chip.className = 'chip';
+    chip.textContent = label;
+    chip.addEventListener('click', () => {
+      document.querySelectorAll('#chips-horas .chip').forEach(c => c.classList.remove('chip-selected'));
+      chip.classList.add('chip-selected');
+      document.getElementById('f-hora').value = label;
+    });
+    container.appendChild(chip);
+    if (!primeiroChip) primeiroChip = { chip, label };
+  });
+  if (!container.children.length) {
+    container.innerHTML = '<span style="font-size:13px;color:#5a5a55">nenhum horário disponível para hoje — escolha outro dia</span>';
+  } else {
+    primeiroChip.chip.classList.add('chip-selected');
+    document.getElementById('f-hora').value = primeiroChip.label;
+  }
+}
+
+document.querySelectorAll('[onclick*="modalAgendar"].btn, [onclick*="modalAgendar"].sticky-visit-bar-btn').forEach(btn => {
+  const original = btn.getAttribute('onclick');
+  btn.setAttribute('onclick', original + '; gerarChipsDias()');
+});
+
+document.getElementById('modalAgendar').addEventListener('click',function(e){
+  if(e.target===this) this.classList.remove('active');
+});
+document.getElementById('modalVideo').addEventListener('click',function(e){
+  if(e.target===this) this.classList.remove('active');
+});
+
+(function(){
+  const stickyBar = document.getElementById('stickyVisitBar');
+  const heroEl = document.querySelector('.hero');
+  if(!stickyBar || !heroEl) return;
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      stickyBar.classList.toggle('visible', !entry.isIntersecting);
+    });
+  }, { threshold: 0 });
+  io.observe(heroEl);
+})();
+
+async function enviarAgendamento(e){
+  e.preventDefault();
+  const btn = document.getElementById('agendar-btn');
+  const feedback = document.getElementById('agendar-feedback');
+  const nome  = document.getElementById('f-nome').value.trim();
+  const email = document.getElementById('f-email').value.trim();
+  const tel   = document.getElementById('f-tel').value.trim();
+  const data  = document.getElementById('f-data').value;
+  const hora  = document.getElementById('f-hora').value;
+  const msg   = document.getElementById('f-msg').value.trim();
+
+  if(!hora){ alert('Selecione um horário.'); return; }
+
+  btn.disabled = true;
+  btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> confirmando...';
+
+  try {
+    const res = await fetch(`${SUPA_URL}/rest/v1/agendamentos`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': SUPA_KEY,
+        'Authorization': `Bearer ${SUPA_KEY}`,
+        'Prefer': 'return=minimal'
+      },
+      body: JSON.stringify({ nome, email, telefone: tel, data_visita: data, horario: hora, imovel: 'santa-amelia-teste', mensagem: msg || null })
+    });
+
+    if(res.ok || res.status === 201){
+      feedback.style.cssText = 'display:block; background:#e8f5e9; color:#2e7d32; padding:10px; border-radius:6px; font-size:14px; margin-bottom:12px;';
+      feedback.textContent = `✓ Visita confirmada para ${data.split('-').reverse().join('/')} às ${hora}. Entraremos em contato em breve!`;
+
+      fetch('/api/notificar', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ nome, tel, email, data, hora, msg })
+      }).catch(() => {});
+
+      e.target.reset();
+      setTimeout(() => {
+        document.getElementById('modalAgendar').classList.remove('active');
+        feedback.style.display = 'none';
+      }, 4000);
+    } else { throw new Error(res.status); }
+  } catch(err) {
+    feedback.style.cssText = 'display:block; background:#fff3e0; color:#e65100; padding:10px; border-radius:6px; font-size:14px; margin-bottom:12px;';
+    feedback.textContent = 'Não foi possível confirmar. Redirecionando para WhatsApp...';
+    setTimeout(() => {
+      const texto = `Olá! Gostaria de agendar uma visita à casa em Santa Amélia.\nNome: ${nome}\nE-mail: ${email}\nTelefone: ${tel}\nData: ${data}\nHorário: ${hora}${msg?`\nMensagem: ${msg}`:''}`;
+      window.open(`https://wa.me/553128881091?text=${encodeURIComponent(texto)}`,'_blank');
+      document.getElementById('modalAgendar').classList.remove('active');
+      feedback.style.display = 'none';
+    }, 2000);
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = 'confirmar agendamento';
+  }
+}
+
+function toggleAccordion(btn){
+  const item = btn.parentElement;
+  item.classList.toggle('open');
+}
+
+function initMapaImovel(){
+  const localImovel = {lat:-19.845611, lng:-43.985056};
+  const mapaEl = document.getElementById('map-real');
+  if(!mapaEl) return;
+  const map = new google.maps.Map(mapaEl, {
+    center: localImovel, zoom: 16, disableDefaultUI: true,
+    zoomControl: true, streetViewControl: false, fullscreenControl: true,
+    mapTypeControl: false, clickableIcons: false,
+    styles: [
+      {elementType:'geometry', stylers:[{color:'#1c2b28'}]},
+      {elementType:'labels.text.fill', stylers:[{color:'#c7cac6'}]},
+      {elementType:'labels.text.stroke', stylers:[{color:'#15211f'}]},
+      {featureType:'poi', elementType:'labels', stylers:[{visibility:'off'}]},
+      {featureType:'transit', elementType:'labels', stylers:[{visibility:'off'}]},
+      {featureType:'road', elementType:'geometry', stylers:[{color:'#223330'}]},
+      {featureType:'water', elementType:'geometry', stylers:[{color:'#15211f'}]}
+    ]
+  });
+  new google.maps.Marker({
+    position: localImovel, map: map,
+    icon: {
+      path: 'M12 0C7.31 0 3.5 3.81 3.5 8.5c0 6.5 8.5 15.5 8.5 15.5s8.5-9 8.5-15.5C20.5 3.81 16.69 0 12 0zm0 12a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7z',
+      fillColor: '#60a8c9', fillOpacity: 1, strokeColor: '#15211f',
+      strokeWeight: 1.5, scale: 1.6, anchor: new google.maps.Point(12, 24)
+    }
+  });
+  google.maps.event.trigger(map, 'resize');
+  map.setCenter(localImovel);
+}
+
+const LB_FOTOS = [
+  '/assets/img/santa-amelia/QeL_Fachada_1.webp',
+  '/assets/img/santa-amelia/QeL_Sala_1.webp',
+  '/assets/img/santa-amelia/QeL_Sala_2.webp',
+  '/assets/img/santa-amelia/QeL_Cozinha_1.webp',
+  '/assets/img/santa-amelia/QeL_Cozinha_2.webp',
+  '/assets/img/santa-amelia/QeL_Cozinha_3.webp',
+  '/assets/img/santa-amelia/QeL_Qt.1_1.webp',
+  '/assets/img/santa-amelia/QeL_Qt.1_2.webp',
+  '/assets/img/santa-amelia/QeL_Qt.2_1.webp',
+  '/assets/img/santa-amelia/QeL_Qt.2_2.webp',
+  '/assets/img/santa-amelia/QeL_Qt.2_3.webp',
+  '/assets/img/santa-amelia/QeL_Qt.3_1.webp',
+  '/assets/img/santa-amelia/QeL_Qt.3_2.webp',
+  '/assets/img/santa-amelia/QeL_Qt.4_1.webp',
+  '/assets/img/santa-amelia/QeL_Qt.4_2.webp',
+  '/assets/img/santa-amelia/QeL_Qt._1.webp',
+  '/assets/img/santa-amelia/QeL_Qt._2.webp',
+  '/assets/img/santa-amelia/QeL_Varanda_1.webp',
+  '/assets/img/santa-amelia/QeL_Varanda_2.webp',
+  '/assets/img/santa-amelia/QeL_Varanda_3.webp',
+];
+
+const LB_LEGENDAS = [
+  'fachada — rua barão de camargo',
+  'sala de estar — dois ambientes',
+  'sala de estar — vista complementar',
+  'cozinha — ilha central',
+  'cozinha — ângulo complementar',
+  'cozinha — acabamentos',
+  'suíte principal — ambiente',
+  'suíte principal — detalhe',
+  'segundo quarto — ambiente',
+  'segundo quarto — detalhe',
+  'segundo quarto — iluminação natural',
+  'terceiro quarto — ambiente',
+  'terceiro quarto — detalhe',
+  'quarto — ambiente',
+  'quarto — detalhe',
+  'quarto — ambiente complementar',
+  'quarto — detalhe complementar',
+  'varanda — vista',
+  'varanda — ambiente',
+  'varanda — detalhe',
+];
+
+(function montarGaleriaDossie(){
+  const container = document.getElementById('dossier-gallery');
+  if(!container) return;
+  LB_FOTOS.forEach((src, idx) => {
+    const item = document.createElement('div');
+    item.className = 'dossier-item' + (idx === 0 ? ' span-row' : '');
+    item.setAttribute('data-caption', LB_LEGENDAS[idx]);
+    item.innerHTML = `<img src="${src}" alt="${LB_LEGENDAS[idx]}" onclick="abrirLightbox(${idx})">`;
+    container.appendChild(item);
+  });
+})();
+
+let lbIdx = 0;
+
+function abrirLightbox(idx) {
+  lbIdx = idx;
+  atualizarLightbox();
+  document.getElementById('lightbox').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function fecharLightbox() {
+  document.getElementById('lightbox').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+function atualizarLightbox() {
+  document.getElementById('lb-img').src = LB_FOTOS[lbIdx];
+  document.getElementById('lb-counter').textContent = `${lbIdx + 1} / ${LB_FOTOS.length}`;
+}
+
+document.getElementById('lb-close').addEventListener('click', fecharLightbox);
+document.getElementById('lb-prev').addEventListener('click', () => { lbIdx = (lbIdx - 1 + LB_FOTOS.length) % LB_FOTOS.length; atualizarLightbox(); });
+document.getElementById('lb-next').addEventListener('click', () => { lbIdx = (lbIdx + 1) % LB_FOTOS.length; atualizarLightbox(); });
+document.getElementById('lightbox').addEventListener('click', (e) => { if (e.target === e.currentTarget) fecharLightbox(); });
+document.addEventListener('keydown', (e) => {
+  if (!document.getElementById('lightbox').classList.contains('active')) return;
+  if (e.key === 'ArrowLeft') { lbIdx = (lbIdx - 1 + LB_FOTOS.length) % LB_FOTOS.length; atualizarLightbox(); }
+  if (e.key === 'ArrowRight') { lbIdx = (lbIdx + 1) % LB_FOTOS.length; atualizarLightbox(); }
+  if (e.key === 'Escape') fecharLightbox();
+});
+
+document.getElementById('modalPerfil').addEventListener('click', function(e){
+  if(e.target===this) this.classList.remove('active');
+});
+async function enviarPerfil(e){
+  e.preventDefault();
+  const btn = document.getElementById('perfil-btn');
+  const fb = document.getElementById('perfil-feedback');
+  const nome = document.getElementById('p-nome').value.trim();
+  const tel = document.getElementById('p-tel').value.trim();
+  const msg = document.getElementById('p-msg').value.trim();
+  btn.disabled = true; btn.textContent = 'enviando…';
+  try {
+    const res = await fetch(`${SUPA_URL}/rest/v1/leads_proprietarios`, {
+      method:'POST',
+      headers:{'Content-Type':'application/json','apikey':SUPA_KEY,'Authorization':'Bearer '+SUPA_KEY,'Prefer':'return=minimal'},
+      body: JSON.stringify({ nome, telefone: tel, mensagem: msg, origem: 'perfil-santa-amelia-teste' })
+    });
+    if(res.ok){
+      fb.style.display='block'; fb.style.background='#e8f5e9'; fb.style.color='#2e7d32';
+      fb.textContent='Mensagem enviada! Entraremos em contato assim que surgir uma oportunidade.';
+      document.getElementById('p-nome').value='';
+      document.getElementById('p-tel').value='';
+      document.getElementById('p-msg').value='';
+    } else { throw new Error(); }
+  } catch {
+    const texto = `Olá! Gostaria de descrever o imóvel que procuro.\nNome: ${nome}\nWhatsApp: ${tel}\nPerfil: ${msg}`;
+    window.open(`https://wa.me/553128881091?text=${encodeURIComponent(texto)}`,'_blank');
+    document.getElementById('modalPerfil').classList.remove('active');
+  } finally {
+    btn.disabled=false; btn.textContent='enviar';
+  }
+}
+</script>
+
+</body>
+</html>
